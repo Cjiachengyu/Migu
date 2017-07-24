@@ -1,0 +1,8 @@
+.money_info_holder { border-top: 1px solid lightgray; border-bottom: 1px solid lightgray; }
+.money_info_my_money { padding: 8px 3%; text-align: center; }
+.money_info_icon { width: 30px; vertical-align: middle; }
+.money_info_my_money_text { vertical-align: middle; }
+.money_info_money { font-size: 23px; color: orangered; vertical-align: middle; }
+.add_money_btn_holder { display: inline-block; text-align: center; width: 30%; }
+.add_money_btn { vertical-align: middle; }
+

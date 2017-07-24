@@ -1,0 +1,67 @@
+body {background: #ffab17;}
+.show_grab_bag_win_body { position: absolute; width: 375px; z-index: 1; }
+.show_grab_bag_win_bg_big {position: absolute; width: 375px; z-index: 1; }
+.show_grab_bag_win_bg_glow { position: absolute; left: -168px; top: -122px; width: 800px; height: 800px; z-index: 0; opacity: 0.8;
+    -webkit-animation: glow_rotate 20s 0.2s linear both infinite;
+    animation: glow_rotate 20s 0.2s linear both infinite;
+}
+@keyframes glow_rotate {
+    0%   { transform: rotate(0deg) }
+    50%  { transform: rotate(180deg) }
+    100% { transform: rotate(360deg) }
+}
+@-webkit-keyframes glow_rotate {
+    0%   { -webkit-transform: rotate(0deg) }
+    50%  { -webkit-transform: rotate(180deg) }
+    100% { -webkit-transform: rotate(360deg) }
+}
+
+.show_grab_bag_win_arm { width: 150px; z-index: 2; position: absolute; left: 63px; top: 260px;
+    -webkit-animation: arm_wobble 1.0s 0.2s ease both infinite;
+    animation: arm_wobble 1.0s 0.2s ease both infinite;
+}
+@keyframes arm_wobble {
+    0%   { transform: rotate(-15deg) }
+    50%  { transform: rotate(-5deg) }
+    100% { transform: rotate(-15deg) }
+}
+@-webkit-keyframes arm_wobble {
+    0%   { -webkit-transform: rotate(-15deg) }
+    50%  { -webkit-transform: rotate(-5deg) }
+    100% { -webkit-transform: rotate(-15deg) }
+}
+
+.show_grab_bag_win_eyes { width: 250px; z-index: 2; position: absolute;
+    -webkit-animation: eyes_move 0.6s 0.2s ease both infinite;
+    animation: eyes_move 0.6s 0.2s ease both infinite;
+}
+@keyframes eyes_move {
+    0%   { transform: translate(96px,183px) }
+    50%  { transform: translate(96px,179px) }
+    100% { transform: translate(96px,183px) }
+}
+@-webkit-keyframes eyes_move {
+    0%   { -webkit-transform: translate(96px,183px) }
+    50%  { -webkit-transform: translate(96px,179px) }
+    100% { -webkit-transform: translate(96px,183px) }
+}
+
+.show_grab_bag_win_bubble { width: 277px; z-index: 2; position: absolute; left: 18px; top: 19px;
+    transform: rotate(-15deg);
+    -webkit-transform: rotate(-15deg);
+}
+
+.show_grab_bag_win_portrait { width: 60px; z-index: 3; border-radius: 60px; position: absolute; left: 45px; top: 68px;
+    transform: rotate(-15deg);
+    -webkit-transform: rotate(-15deg);
+}
+
+.show_grab_bag_win_text_holder { width: 150px; z-index: 3; position: absolute; left: 105px; top: 40px;
+    transform: rotate(-15deg);
+    -webkit-transform: rotate(-15deg);
+}
+
+.show_grab_bag_win_flag { width: 120px; z-index: 2; position: absolute; left: 29px; top: 373px; }
+.show_grab_bag_win_text_money { font-size: 20px; font-weight: bold; color: red; }
+
+

@@ -1,0 +1,23 @@
+.top_tab { width: 50%; }
+.tab_not_selected { border-bottom: 0px; }
+.tab_selected { padding-bottom: 14px; }
+
+.user_info_holder { text-align: center; background: #ff8800; color: white; padding: 15px 0; font-size: 20px;}
+
+.bag_list_holder { margin-bottom: 65px;}
+.bag_list_item { display: block; padding: 10px 2% 10px 3%; margin: 10px 3%; border: solid 1px #f84; border-radius: 10px;}
+.bag_list_item_even {border: solid 1px #888;}
+.bag_list_item_icon { float: left; width: 23px; padding-top: 9px; padding-right: 9px;}
+.bag_list_item_left_info { float: left; width: 55%; }
+.bag_list_item_right_info { float: right; width: 30%; }
+.bag_list_item_left_info_zsd { }
+.bag_list_item_left_info_time { font-size: 14px; padding: 4px 0 0 0; color: gray; }
+.bag_list_item_right_info_money { }
+.bag_list_item_right_info_money_ver_center {padding-top: 10px; color: orangered; }
+.bag_list_item_right_info_count { font-size: 14px; padding: 4px 0 0 0; color: gray; }
+
+
+
+
+
+

@@ -1,0 +1,3 @@
+.show_action {z-index: 1000; position: fixed;}
+.show_action .support_select {background: red;}
+.show_action .opposite_select {background: red;}

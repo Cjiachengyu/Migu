@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.eclassmate.qzy.persistence.ShowMapper">
+
+    <!-- 公共resultMap ================================================================================ -->
+    <!-- User -->
+    <resultMap id="userMap" type="User">
+        <id property="userId" column="userId"/>
+        <result property="userName" column="userName"/>
+        <result property="openId" column="openId"/>
+        <result property="registerTime" column="registerTime"/>
+        <result property="updateWeixinTime" column="updateWeixinTime"/>
+        <result property="lastLoginTime" column="lastLoginTime"/>
+        <result property="gender" column="gender"/>
+        <result property="portrait" column="portrait"/>
+        <result property="city" column="city"/>
+        <result property="province" column="province"/>
+        <result property="country" column="country"/>
+        <result property="money" column="money"/>
+
+        <result property="rightAnswerCount" column="rightAnswerCount"/>
+        <result property="sentMoney" column="sentMoney"/>
+    </resultMap>
+
+    <!-- UserBag -->
+    <resultMap id="userBagMap" type="UserBag">
+        <id property="userId" column="userId"/>
+        <id property="bagId" column="bagId"/>
+        <result property="beginBagTime" column="beginBagTime"/>
+        <result property="endBagTime" column="endBagTime"/>
+        <result property="userBagStatus" column="userBagStatus"/>
+        <result property="gotMoney" column="gotMoney"/>
+
+        <result property="rightAnswerCount" column="rightAnswerCount"/>
+    </resultMap>
+    
+    <!-- Prize -->
+    <resultMap id="prizeMap" type="Prize">
+        <id property="prizeId" column="prizeId"/>
+        <result property="prizeName" column="prizeName"/>
+        <result property="prizeImage" column="prizeImage"/>
+        <result property="prizeMoney" column="prizeMoney"/>
+    </resultMap>
+    
+    <!-- Gift -->
+    <resultMap id="giftMap" type="Gift">
+        <id property="giftId" column="giftId"/>
+        <result property="prizeId" column="prizeId"/>
+        <result property="senderId" column="senderId"/>
+        <result property="receiverId" column="receiverId"/>
+        <result property="sendTime" column="sendTime"/>
+        <result property="receiveTime" column="receiveTime"/>
+    </resultMap>
+    
+    <resultMap id="giftWithAllMessageMap" type="Gift" extends="giftMap">
+        <association property="prize" resultMap="prizeMap"></association>
+        <association property="sender" javaType="User" column="senderId" select="getSender"></association>
+        <association property="receiver" javaType="User" column="receiverId" select="getReceiver"></association>
+    </resultMap>
+    
+    <select id="getSender" resultType="User">
+        select
+            *
+        from
+            user 
+        where
+            userId = #{senderId}
+    </select>
+    
+    <select id="getReceiver" resultType="User">
+        select
+            *
+        from
+            user 
+        where
+            userId = #{receiverId}
+    </select>
+    
+    <!-- Show -->
+    <resultMap id="showMap" type="Show">
+        <id property="showId" column="showId"/>
+        <result property="showType" column="showType"/>
+        <result property="showTime" column="showTime"/>
+        <result property="showerId" column="showerId"/>
+    </resultMap>
+    
+    <resultMap id="showWithShowerMap" type="Show" extends="showMap">
+        <association property="shower" resultMap="userMap"></association>
+    </resultMap>
+
+	<!-- ShowGrabBag -->
+	<resultMap id="showGrabBagMap" type="ShowGrabBag" extends="showMap">
+	  	<result property="showGrabBagType" column="showGrabBagType"/>
+	  	<result property="userId" column="userId"/>
+	  	<result property="bagId" column="bagId"/>
+	</resultMap>
+	
+	<resultMap id="showGrabBagWithShowerMap" type="ShowGrabBag" extends="showWithShowerMap">
+	  	<result property="showGrabBagType" column="showGrabBagType"/>
+	  	<result property="userId" column="userId"/>
+	  	<result property="bagId" column="bagId"/>
+	</resultMap>
+	
+
+    <!-- ================================================================================ -->
+    <insert id="insertShow" useGeneratedKeys="true" keyProperty="showId" parameterType="Show">
+        insert into `show`
+            (showType, showTime, showerId)
+        values
+            (#{showType}, #{showTime}, #{showerId})
+    </insert>
+
+    <insert id="insertShowGrabBag" parameterType="ShowGrabBag">
+		insert into show_grab_bag
+            (showId, showGrabBagType, userId, bagId)
+		values
+            (#{showId}, #{showGrabBagType}, #{userId}, #{bagId})
+	</insert>
+	
+    <insert id="insertShowPrize" parameterType="ShowPrize">
+		insert into show_prize 
+            (showId, prizeId)
+		values
+            (#{showId}, #{prizeId})
+	</insert>
+	
+    <insert id="insertShowGift" parameterType="ShowGift">
+		insert into show_gift  
+            (showId, giftId, showGiftType)
+		values
+            (#{showId}, #{giftId}, #{showGiftType})
+	</insert>
+
+    <select id="getShow" resultType="Show">
+        select
+            *
+        from
+            `show`
+        where
+            showId = #{showId}
+    </select>
+
+    <!-- <resultMap id="userBagWithUserMap" type="UserBag" extends="userBagMap">
+        <association property="user" resultMap="userMap"></association>
+    </resultMap>
+    <resultMap id="getShowGrabBagMap" type="ShowGrabBag" extends="showGrabBagMap">
+        <association property="userBag" resultMap="userBagWithUserMap"></association>
+    </resultMap> -->
+    
+	<select id="getShowGrabBag" resultMap="showGrabBagWithShowerMap">
+		select
+			`show`.*
+			, show_grab_bag.*
+			, user.*
+        from
+			`show`
+			join show_grab_bag using (showId)
+			join user on show.showerId = user.userId 
+		where
+            showId = #{showId}
+	</select>
+	
+	
+	
+	<resultMap id="getShowPrizeMap" type="ShowPrize" extends="showWithShowerMap">
+	  	<result property="prizeId" column="prizeId"/>
+	  	<association property="prize" resultMap="prizeMap"></association>
+	</resultMap>
+		
+	<select id="getShowPrize" resultMap="getShowPrizeMap">
+		select
+			`show`.*
+			, show_prize.*
+			, prize.*
+			, user.*
+        from
+			`show`
+			join show_prize using (showId) 
+			join prize using (prizeId) 
+			join user on show.showerId = user.userId 
+		where
+            showId = #{showId}
+	</select>
+	
+	<resultMap id="getShowGiftMap" type="ShowGift" extends="showWithShowerMap">
+	  	<result property="giftId" column="giftId"/>
+	  	<result property="showGiftType" column="showGiftType"/>
+	  	<association property="gift" resultMap="giftWithAllMessageMap"></association>
+	</resultMap>
+	
+	<select id="getShowGift" resultMap="getShowGiftMap">
+		select
+			`show`.*
+			, show_gift.*
+			, gift.*
+			, prize.*
+			, user.*
+        from
+			`show`
+			join show_gift using (showId) 
+			join gift using (giftId) 
+			join prize using (prizeId) 
+			join user on show.showerId = user.userId 
+		where
+            showId = #{showId}
+	</select>
+	
+	<select id="getShowAction" resultType="ShowAction">
+        select
+            *
+        from
+            show_action  
+        where
+            userId = #{userId} 
+            and showId = #{showId}
+    </select>
+    
+    <update id="updateShowAction" parameterType="ShowAction">
+		update
+            show_action 
+		set
+            actionType=#{actionType} 
+		where
+            userId = #{userId} 
+            and showId = #{showId}
+	</update>
+    
+    <insert id="insertShowAction" parameterType="ShowAction">
+		insert into show_action  
+            (userId, showId, actionType)
+		values
+            (#{userId}, #{showId}, #{actionType})
+	</insert>
+	
+	<select id="getShowActionList" resultType="ShowAction">
+		select
+			show_action.*
+        from
+			show_action 
+		where
+            showId = #{showId}
+	</select>
+	
+	<select id="getPraiseOrlaughCount" resultType="int">
+		select
+			count(*) 
+        from
+			show_grab_bag  
+		where
+            bagId = #{bagId} 
+            and userId = #{userId} 
+            <if test="showGrabBagType != 2">
+                and (showGrabBagType = 1 or showGrabBagType = 3)
+            </if>
+            <if test="showGrabBagType == 2">
+                and showGrabBagType = 2
+            </if>
+	</select>
+
+</mapper>

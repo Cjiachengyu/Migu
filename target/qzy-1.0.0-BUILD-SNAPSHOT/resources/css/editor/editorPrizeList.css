@@ -1,0 +1,14 @@
+.prize_list_holder { width: 600px; margin: 30px auto; }
+.prize_holder { padding: 10px 0; border-bottom: solid 1px lightgray; }
+
+.prize_index_holder { float: left; width: 5%; padding: 10px 0; }
+.prize_image_holder{ float: left; width: 15%; }
+.prize_name_holder{ float: left; width: 25%; padding: 10px 0;}
+.prize_money_holder{ float: left; width: 25%;padding: 10px 0;}
+.prize_operation_holder{ float: left; width: 30%;padding: 8px 0;}
+
+.prize_image_holder img {width: 45px; height: 45px; border-radius: 35px; vertical-align: middle;}
+.prize_name { }
+.prize_money { }
+.modify_btn, .delete_btn { padding: 2px 5px; width: 60px; margin: 0 10px; }
+

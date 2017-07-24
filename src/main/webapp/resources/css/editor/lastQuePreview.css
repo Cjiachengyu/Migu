@@ -1,0 +1,11 @@
+.last_que_preview_left { position: absolute; left: 0; width: 360px; height: 100%; border-right: solid 1px lightgray; overflow: auto; }
+.last_que_holder {}
+
+.last_que_preview_right { position: absolute; right: 0; width: 340px; height: 100%; }
+.preview_tip { text-align: center; padding: 35px 30px; font-size: large;}
+.preview_tip p { padding: 5px;}
+
+.preview_ok_btn_holder { position: absolute; left: 0; right: 0; bottom: 30px;}
+.preview_ok_btn { width: 240px; margin: 20px auto; padding: 5px; display: block;}
+
+

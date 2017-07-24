@@ -1,0 +1,30 @@
+.user_info_holder { text-align: center; background-image: url("../../image/top_bg.jpg"); background-size: cover; }
+.top_title  { display: block; height: 30px; padding: 10px 0; text-align: center; font-weight: bold; font-size: 25px; color: white; float: none;}
+.refresh_user_account, .refresh_user_account:visited { color: white; position: absolute; top: 24px; right: 5px; font-size: 10px;}
+.user_portrait { width: 120px; height: 120px; border: none; border-radius: 120px; margin-top: 10px; box-shadow: 0 0 0 6px white;}
+.user_info { text-align: center; padding: 10px;}
+.user_info span{ display: inline-block; margin: 10px auto; background: rgba(255,255,255,0.8); border-radius: 5px; padding: 5px 10px;}
+
+.sub_tab_holder { text-align: center; border-bottom: 3px solid rgb(228, 228, 228); }
+.sub_tab { padding: 18px 2% 13px 2%; display: inline-block; font-size: 20px; width: 22%; }
+.sub_tab_selected { border-bottom: 3px solid #f80; margin-bottom: -3px; color: #f80; }
+.sub_tab_not_selected {border-bottom: 3px solid rgb(228, 228, 228); margin-bottom: -3px; }
+
+.bill_holder { margin-top: 2px; }
+.bill_item { margin: 0 5%; border-bottom: 1px dotted #e5e5e5; padding: 14px 5% 10px 5%;}
+.bill_item span { display: inline-block; float: left;}
+.bill_item .create_time {width: 40%;}
+.bill_item .money { width: 20%; color: red; }
+.bill_item .description { width: 40%; white-space: nowrap; text-overflow: ellipsis; overflow: hidden;}
+
+.prize_holder { padding: 0 0 10px 3%; margin: 10px 3% 0px 3%; border-bottom: 1px dotted #e5e5e5;}
+.prize_holder .prize_image_holder {display: inline-block; float: left; width: 20%; height: 50px; }
+.prize_holder .prize_image { width: 50px; height: 50px; }
+.prize_holder .prize_name_money_holder {display: inline-block; float: left; width: 40%; height: 50px; }
+.prize_holder .prize_name { display: block; margin-top: 5px;}
+.prize_holder .prize_count { display: block; font-size: 14px; color: gray; margin-top: 5px;}
+.prize_holder .prize_operation_holder {display: inline-block; float: left; width: 40%; height: 50px; text-align: center;}
+.prize_holder .operation_button { display: inline-block; background: #ffad50; width: 45px; text-align: center; margin-top: 12px; padding: 4px; color: white; box-shadow: 1px 1px 1px 0 rgba(0,0,0,0.4); }
+.prize_holder .operation_button_one { border-radius: 8px; width: 60px; }
+.prize_holder .operation_button_left { border-radius: 8px 0 0 8px;}
+.prize_holder .operation_button_right { border-radius: 0 8px 8px 0; border-left: 1px solid #FFF1E1; }

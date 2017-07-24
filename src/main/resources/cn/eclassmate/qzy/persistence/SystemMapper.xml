@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.eclassmate.qzy.persistence.SystemMapper">
+
+	<insert id="insertRequestRecord" useGeneratedKeys="true" keyProperty="requestId"  parameterType="RequestRecord">
+        insert into request_record
+            (enterTime, leaveTime,consumeTime,userId,fromIp,requestUrl,requestParam,requestHeader)
+        values
+            (#{enterTime},#{leaveTime}, #{consumeTime},#{userId},#{fromIp},#{requestUrl},#{requestParam},#{requestHeader})
+    </insert>
+    
+</mapper>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration status="WARN">
+    <appenders>
+        <Console name="ConsoleAppender" target="SYSTEM_OUT">
+            <PatternLayout charset="GBK" pattern="%d{yyyy-MM-dd HH:mm:ss.SSS} [%t] [%X{userid}-%X{username}@%X{src_ip}->%X{dst_url}] %-3p %c{1} -> %msg%n"/>
+        </Console>
+        <RollingFile name="QzyFileAppender"
+                     fileName="/var/webapp/file.war/qzy/log/qzy.log"
+                     filePattern="/var/webapp/file.war/qzy/log/backup/qzy-%d{yyyy-MM-dd}.log.gz">
+            <PatternLayout>
+                <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%X{thread_id} %t] [%X{userid}-%X{username}@%X{src_ip}->%X{dst_url}] %-3p %c{1} -> %msg%n</pattern>
+            </PatternLayout>
+            <Policies>
+                <TimeBasedTriggeringPolicy/>
+            </Policies>
+            <DefaultRolloverStrategy compressionLevel="9"/>
+        </RollingFile>
+    </appenders>
+    <loggers>
+        <root level="warn">
+            <appender-ref ref="ConsoleAppender"/>
+            <appender-ref ref="QzyFileAppender"/>
+        </root>
+        <logger name="cn.eclassmate" level="info"/>
+        <logger name="org.apache" level="info"/>
+        <logger name="org.springframework" level="info"/>
+    </loggers>
+</configuration>
+

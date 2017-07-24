@@ -1,0 +1,16 @@
+﻿.top_bg {background: gray;}
+.top_holder {height: 75px; color: white; }
+.top_holder a {color: white; }
+
+.top_left_holder { float: left; }
+.top_left_img {float: left; margin: 15px 0;}
+.top_left_info {float: left; margin: 15px 10px;  }
+.top_left_info_title {margin-top: 7px; font-size: 20px; font-weight: bold; }
+
+.top_right_top_holder {position: absolute; right: 10px; top: 0px; }
+.top_left_info_small_info { margin-top: 5px; font-size: 14px; }
+
+.top_right_holder { position: absolute; right: 0px; bottom: 0px; }
+.top_main_menu_div { margin: 0 10px; display: inline-block; position: relative}
+.main_menu {width:30px; height: 8px; margin: 0 auto; }
+.current_main_menu { background-image: url('../../image/current_menu.png'); }

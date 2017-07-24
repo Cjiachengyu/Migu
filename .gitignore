@@ -1,0 +1,9 @@
+#ignore thumbnails created by windows
+Thumbs.db
+
+migu/build/
+
+.idea/
+migu/Nlfdc.iml
+migu/out/
+migu/target/

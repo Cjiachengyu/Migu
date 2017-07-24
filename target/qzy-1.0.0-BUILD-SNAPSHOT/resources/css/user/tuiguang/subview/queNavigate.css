@@ -1,0 +1,94 @@
+.que_num_nav_holder { text-align: center; border-bottom: solid 2px #ff8800; height: 60px; background: #ff8800; position: fixed; width: 100%; top: 0; z-index: 20;}
+.que_num_nav_icon { width: 18px; height: 32px; margin: 14px 25px;}
+.que_num_nav_left_icon { position: absolute; top: 0; left: 0; background: url("../../../../../resources/image/user/grabbag/que_nav_left.png?v=1"); background-size: cover;}
+.que_num_nav_right_icon { position: absolute; top: 0; right: 0; background: url("../../../../../resources/image/user/grabbag/que_nav_right.png?v=1"); background-size: cover;}
+.que_num { display: inline-block; height: 18px; width: 18px; font-size: 17px; font-family: Arial; padding: 5px; margin: 16px 0; text-align: center; color: white; font-weight: bold;}
+.current_que_num_nav { border: solid 2px #ff8800; border-radius: 30px; background: white; color: #ff8800;}
+
+
+.que_list_holder { opacity: 0;}
+.que_holder { width: 90%; padding: 20px 5%; overflow: auto; margin: 70px 0 95px 0;}
+.que_content_top_bar {margin: 0 0 10px 0;}
+.que_source_holder { font-style: italic; float: left;}
+.que_feedback { display: inline-block; float: right; color: #C7C7C7; font-size: 13px; padding: 1px;}
+.que_content_holder {}
+.que_choice_holder {padding-top: 8px;}
+.que_choice_item { padding: 3px 0;}
+.que_choice_title_holder {width: 10%; display: inline-block; vertical-align: top;}
+.que_choice_title { color: #ff8800; font-family: Arial; font-size: 17px; font-weight: bold; height: 14px; width: 14px; padding: 3px 5px 7px 5px; text-align: center; border: solid 2px rgba(0,0,0,0); border-radius: 100px;}
+.que_choice_title_selected { color: white; background: #ff8800; border: solid 2px #ff8800;}
+.que_choice_title_user_right { color: white; background: #4ed34f; border: solid 2px #4ed34f;}
+/* .que_choice_title_user_wrong { color: white; background: #ff0000; border: solid 2px #ff0000;} */
+.que_choice_title_user_wrong { color: white; border: solid 2px #f00; background-image: url("../../../../image/user/grabbag/wrong.png?v=4"); background-size: cover; }
+.que_choice_title_right_answer { color: #4ed34f; background: white; border: solid 2px #4ed34f;}
+.que_choice_content { display: inline-block; width: 85%; min-height: 20px; padding: 5px 0; }
+.que_answer_holder, .que_analysis_holder { border-top: dotted 1px lightgray; margin: 10px 0; padding: 10px 0;}
+.que_answer_title_holder, .que_analysis_title_holder { font-weight: bold; color: #f80; margin: 0 0 5px 0;}
+
+
+.submit_operation_btn_holder { text-align: center; padding: 15px 0; border-top: solid 2px #ff8800; background: white; }
+.oper_que_nav_btn { display: inline-block; font-size: 18px; padding: 5px 2%; width: 40%; margin: 0 2%; border-radius: 8px; color: white; background: #ff961e;}
+
+
+.que_feedback_holder { padding: 10px 10px 0 10px; }
+.feedback_item { padding: 5px 10px; }
+.feedback_title { display: inline-block; vertical-align: middle; width: 14px; height: 14px; border-radius: 20px; border: solid 2px orange; margin-right: 5px;}
+.feedback_title_selected { background: orange; }
+.feedback_content { display: inline-block; vertical-align: middle; }
+#feedback_msg { display: inline-block; width: 60%; padding: 2px; border: solid 1px lightgray;}
+.feedback_ok_btn { display: block; width: 120px; background: orange; border-radius: 8px; padding: 5px; text-align: center; color: white; margin: 11px auto;}
+
+
+
+
+
+.operation_btn_holder { text-align: center; }
+.operation_btn_wide { width: 140px; margin: 25px 10px 20px 10px;}
+
+
+.grab_tip { text-align: center; padding: 10px 0 25px 0;}
+.result_tip {font-size: 20px; font-weight: bold; }
+
+.grab_bag_title_img { margin: 0px auto 8px auto; height: 25px; display: block;}
+.grab_bag_face_img {height: 150px; margin: 5px auto 10px auto; display: block; }
+.answer_all_right_top { background-image: url("../../../../image/user/grabbag/result_win_bg.png"); background-size: cover; background-position-x: center; padding-top: 30px; margin-bottom: 20px; }
+.answer_not_right_top { background: white; padding-top: 30px;}
+
+.money_change_tip { text-align: center; padding: 10px 0 5px 0;}
+.money_change_tip_text {font-size: 20px; font-weight: bold; vertical-align: middle;}
+
+.user_grab_bag_win_animation_holder {
+    text-align: center;
+}
+.user_grab_bag_win_animation {
+    display: inline-block;
+    -webkit-animation: win_animation_key 0.8s ease;
+    animation: win_animation_key 0.8s ease;
+}
+@keyframes win_animation_key {
+    0%   { opacity:0.8; transform: scale(1.6,1.6); }
+    100% { opacity:1;   transform: scale(1.0,1.0); }
+}
+@-webkit-keyframes win_animation_key {
+    0%   { opacity:0.8; -webkit-transform: scale(1.6,1.6); }
+    100% { opacity:1;   -webkit-transform: scale(1.0,1.0); }
+}
+
+
+.induce_img_fixed {width: 90%; display: block; position: fixed; left: 5%; bottom: 60px;}
+.induce_img_normal { width: 90%; margin: auto; display: block; }
+
+
+.money_info_holder { border-top: 1px solid lightgray; border-bottom: 1px solid lightgray; }
+.money_info_my_money { padding: 8px 3%; text-align: center; }
+.money_info_icon { width: 30px; vertical-align: middle; }
+.money_info_my_money_text { vertical-align: middle; }
+.money_info_money { font-size: 23px; color: orangered; vertical-align: middle; }
+.add_money_btn_holder { display: inline-block; text-align: center; width: 30%; }
+.add_money_btn { vertical-align: middle; }
+
+
+
+.money_change_tip_money_all_holder {text-align: center; }
+.money_change_tip_money_all { font-size: 14px; color: rgb(140, 140, 140);}
+

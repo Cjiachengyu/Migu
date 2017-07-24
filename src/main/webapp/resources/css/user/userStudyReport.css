@@ -1,0 +1,13 @@
+.chart_title_holder {
+    padding: 25px 0 5px 0;
+    font-size: large;
+    font-weight: bold;
+    text-align: center;
+}
+
+.container {
+    height: 400px;
+    margin: 0 auto;
+}
+
+

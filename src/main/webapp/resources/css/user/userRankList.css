@@ -1,0 +1,35 @@
+.top_tab  { width: 33.333333%; }
+.tab_not_selected { border-bottom: 0px; }
+.tab_selected { padding-bottom: 14px; }
+
+.user_info_holder { text-align: center;
+    background: #ff8800;
+    background: -o-linear-gradient(top, #ff8800, #fca23b);
+    background: -moz-linear-gradient(top, #ff8800, #fca23b);
+    background: -webkit-linear-gradient(top, #ff8800, #fca23b);
+    background: linear-gradient(top, #ff8800, #fca23b);
+}
+.user_info_holder { text-align: center; background-image: url("../../image/top_bg.jpg"); background-size: cover; }
+.user_portrait { box-shadow: 0 0 0 4px white; border-radius: 69px; width: 110px; height: 110px; margin-top: 24px; margin-bottom: 33px; }
+.user_info_holder .left_info { position: absolute; top: 136px; left: 25px; background: white; width: 57px; height: 35px; padding: 18px 7px; border-radius: 100px; font-size: 14px; }
+.user_info_holder .left_info .color_red { color: red; padding-top: 5px; }
+.user_info_holder .right_info { position: absolute; background: white; top: 88px; right: 36px; width: 37px; height: 31px; padding: 10px 7px; border-radius: 100px; font-size: 14px; }
+.user_info_holder .right_info .color_red { color: red; padding-top: 3px; }
+
+.list_item { padding: 10px 0% 10px 0%; margin: 0 5%; border-bottom: 1px dotted #EDEDED;}
+.list_item span {display: inline-block; padding-top: 8px;}
+.list_item img { width: 40px; height: 40px; border-radius: 40px; display: block; }
+.list_item_index { float: left; width: 15%; margin: 2px 2% 0 2%; font-size: 18px; font-weight: bold; color: #f84; text-align: center; }
+.list_item_index span { padding-top: 6px; padding-bottom: 4px; }
+.list_item_index_first span { padding-top: 11px; padding-bottom: 0px; width: 29px; background: url("../../image/user/rank/rank_first.png") no-repeat; color: white; background-size: contain; font-size: 14px;}
+.list_item_portrait { float: left; width: 22%; font-size: 17px; }
+.list_item_name { float: left; width: 30%; font-size: 17px; }
+.list_item_count { float: left; font-size: 18px; font-weight: bold; color: orangered; }
+.list_item_count_right_answer { float: left; font-size: 18px; font-weight: bold; color: orangered; }
+.list_item_count_right_answer .list_item_count_right_answer_row1 { font-size: 17px; display: block; padding-top: 4px;}
+.list_item_count_right_answer .list_item_count_right_answer_row2 { font-size: xx-small; display: block; color: lightgray; padding-top: 0px; font-weight: normal;}
+
+
+
+
+

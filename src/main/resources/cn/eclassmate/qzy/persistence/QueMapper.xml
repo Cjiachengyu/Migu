@@ -1,0 +1,366 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.eclassmate.qzy.persistence.QueMapper">
+
+	<!-- 公共resultMap ================================================================================ -->
+    <!-- Editor -->
+    <resultMap id="editorMap" type="Editor">
+        <id property="editorId" column="editorId"/>
+        <result property="editorName" column="editorName"/>
+        <result property="loginName" column="loginName"/>
+        <result property="password" column="password"/>
+        <result property="privilegeMask" column="privilegeMask"/>
+    </resultMap>
+    
+    <!-- ZsdCatalog -->
+    <resultMap id="zsdCatalogMap" type="ZsdCatalog">
+        <id property="zskId" column="zskId"/>
+        <id property="zsd1Id" column="zsd1Id"/>
+        <id property="zsd2Id" column="zsd2Id"/>
+        <result property="zskName" column="zskName"/>
+        <result property="zsd1Name" column="zsd1Name"/>
+        <result property="zsd2Name" column="zsd2Name"/>
+    </resultMap>
+    
+    <!-- Que -->
+	<resultMap id="queMap" type="Que">
+	  	<id property="queId" column="queId"/>
+	  	<result property="queType" column="queType"/>
+	  	<result property="source" column="source"/>
+	  	<result property="kaodian" column="kaodian"/>
+	  	<result property="difficulty" column="difficulty"/>
+	  	<result property="creatorId" column="creatorId"/>
+	  	<result property="createTime" column="createTime"/>
+	  	<result property="updaterId" column="updaterId"/>
+	  	<result property="updateTime" column="updateTime"/>
+	  	<result property="contentHtml" column="contentHtml"/>
+	  	<result property="analysisHtml" column="analysisHtml"/>
+	  	<result property="answerHtml" column="answerHtml"/>
+	  	<result property="queStatus" column="queStatus"/>
+	</resultMap>
+	
+	<resultMap id="queWithQCListMap" type="Que" extends="queMap">
+        <collection property="queChoiceList" ofType="QueChoice" column="queId" select="getQueChoiceListByQueId"></collection>
+    </resultMap>
+	
+	<resultMap id="queWithCreatorAndQCListMap" type="Que" extends="queMap">
+        <association property="creator" resultMap="editorMap"></association>
+        <collection property="queChoiceList" ofType="QueChoice" column="queId" select="getQueChoiceListByQueId"></collection>
+        <collection property="zsdCatalogList" ofType="ZsdCatalog" column="queId" select="getZsdCatalogByQueId"></collection>
+        <collection property="queFeedBackList" ofType="QueFeedBack" column="queId" select="getQueFeedBackByQueId"></collection>
+    </resultMap>
+
+    <select id="getQueChoiceListByQueId" resultType="QueChoice">
+        select
+            *
+        from
+            que_choice
+        where
+            queId = #{queId}
+    </select>
+    
+    <select id="getZsdCatalogByQueId" resultType="ZsdCatalog">
+        select 
+            que_zsd.*
+            ,zsk.*
+			,zsd_1.*
+			,zsd_2.* 
+        from
+            que_zsd 
+            left join zsk using(zskId) 
+			left join zsd_1 using(zsd1Id) 
+			left join zsd_2 using(zsd2Id) 
+        where
+            que_zsd.queId = #{queId}
+    </select>
+    
+    <select id="getQueFeedBackByQueId" resultType="QueFeedBack">
+        select
+            *
+        from
+            que_feedback 
+        where
+            queId = #{queId} 
+            and isHandled = false
+    </select>
+
+    <!-- Zsd2 -->
+    <resultMap id="zsd2Map" type="Zsd2">
+	  	<id property="zsd2Id" column="zsd2Id"/>
+	  	<result property="zsd2Name" column="zsd2Name"/>
+	  	<result property="zsd1Id" column="zsd1Id"/>
+	</resultMap>
+    
+    <!-- Zsd1 -->
+    <resultMap id="zsd1Map" type="Zsd1">
+	  	<id property="zsd1Id" column="zsd1Id"/>
+	  	<result property="zsd1Name" column="zsd1Name"/>
+	  	<result property="zskId" column="zskId"/>
+	</resultMap>
+    
+    <resultMap id="zsd1WithZsd2ListMap" type="Zsd1" extends="zsd1Map">
+        <collection property="zsd2List" resultMap="zsd2Map"></collection>
+    </resultMap>
+
+    <!-- Zsk -->
+    <resultMap id="zskMap" type="Zsk">
+	  	<id property="zskId" column="zskId"/>
+	  	<result property="zskName" column="zskName"/>
+        <result property="zslId" column="zslId"/>
+	</resultMap>
+    
+    <resultMap id="zskWithZsd1ListMap" type="Zsk" extends="zskMap">
+        <collection property="zsd1List" resultMap="zsd1WithZsd2ListMap"></collection>
+    </resultMap>
+    
+    <resultMap id="zslWithZsd1ListMap" type="Zsl">
+    	<id property="zslId" column="zslId"/>
+	  	<result property="zslName" column="zslName"/>
+        <collection property="zskList" resultMap="zskWithZsd1ListMap"></collection>
+    </resultMap>
+
+
+    <!-- 查询 ================================================================================ -->
+    <!-- 知识库 -->
+    <select id="getAllZsk" resultType="Zsk">
+        select
+            zsk.* 
+        from
+            zsk
+    </select>
+    
+    <select id="getAllZskWithZsd" resultMap="zskWithZsd1ListMap">
+        select
+            zsk.*
+            , zsd_1.*
+            , zsd_2.*
+        from
+            zsk
+            left join zsd_1 using(zskId)
+            left join zsd_2 using(zsd1Id)
+    </select>
+    
+    <select id="getAllZslWithZsd" resultMap="zslWithZsd1ListMap">
+        select 
+        	zsl.*
+            , zsk.*
+            , zsd_1.*
+            , zsd_2.*
+        from 
+        	zsl 
+            left join zsk using(zslId) 
+            left join zsd_1 using(zskId)
+            left join zsd_2 using(zsd1Id) 
+        order by
+            zsl.zslOrder
+    </select>
+
+    <!-- 查询题目列表 -->
+    <sql id="getQueListSelectCondition">
+        <if test="zskId != 0 || zsd1Id != 0 || zsd2Id != 0">
+            and que.queId in (select queId from (
+                select distinct queId
+                from que_zsd
+                where true
+                <if test="zskId != 0">
+                    and que_zsd.zskId=#{zskId}
+                </if>
+                <if test="zsd1Id != 0">
+                    and que_zsd.zsd1Id=#{zsd1Id}
+                </if>
+                <if test="zsd2Id != 0">
+                    and que_zsd.zsd2Id=#{zsd2Id}
+                </if>
+            ) as tmp_que_id)
+        </if>
+    </sql>
+
+    <select id="getRandomQueToCreateBagCount" resultType="int">
+        select
+            count(distinct queId)
+        from
+            qzy.que
+            join que_zsd using (queId)
+        where
+            que.queStatus = 0
+            <if test="zskId != 0">
+                and que_zsd.zskId=#{zskId}
+            </if>
+            <if test="zsd1Id != 0">
+                and que_zsd.zsd1Id=#{zsd1Id}
+            </if>
+            <if test="zsd2Id != 0">
+                and que_zsd.zsd2Id=#{zsd2Id}
+            </if>
+            <if test="userId != 0">
+                and queId not in (select distinct queId from (select queId from user_answer where user_answer.userId = #{userId}) as tmp_tbl_que_id)
+            </if>
+    </select>
+
+    <select id="getRandomQueToCreateBag" resultType="Que">
+        select
+            distinct que.*
+        from
+            qzy.que
+            join que_zsd using (queId)
+        where
+            que.queStatus = 0
+            <if test="zskId != 0">
+                and que_zsd.zskId=#{zskId}
+            </if>
+            <if test="zsd1Id != 0">
+                and que_zsd.zsd1Id=#{zsd1Id}
+            </if>
+            <if test="zsd2Id != 0">
+                and que_zsd.zsd2Id=#{zsd2Id}
+            </if>
+            <if test="userId != 0">
+                and queId not in (select distinct queId from (select queId from user_answer where user_answer.userId = #{userId}) as tmp_tbl_que_id)
+            </if>
+        limit
+            #{selectIndex}, 1
+    </select>
+
+    <select id="getQueListForEditor" resultMap="queWithCreatorAndQCListMap">
+        select
+            que.*
+            , editor.*
+        from
+            qzy.que 
+            left join editor on que.creatorId = editor.editorId  
+        where
+            <if test="queStatus != -1">
+                que.queStatus=#{queStatus}
+            </if>
+            <if test="queStatus == -1">
+                que.queStatus in(0,2,3)
+            </if>
+            <if test="creatorId != 0">
+                and que.creatorId = #{creatorId}
+            </if>
+            <include refid="getQueListSelectCondition"/>
+        order by
+            createTime desc
+        limit
+            #{limitBegin}, #{limitCount}
+    </select>
+
+    <select id="getQueListForEditorCount" resultType="int">
+        select
+            count(*)
+        from
+            qzy.que
+        where
+            <if test="queStatus != -1">
+                que.queStatus=#{queStatus}
+            </if>
+            <if test="queStatus == -1">
+                que.queStatus in(0,2,3)
+            </if>
+            <if test="creatorId != 0">
+                and que.creatorId = #{creatorId}
+            </if>
+            <include refid="getQueListSelectCondition"/>
+    </select>
+
+    <!-- Que -->
+    <select id="getQue" resultMap="queWithQCListMap">
+        select
+            que.*
+            , user.*
+        from
+            qzy.que
+            left join user on que.creatorId = user.userId
+        where
+            queId = #{queId}
+    </select>
+
+    <update id="deleteQue">
+    	update 
+    		que 
+    	set 
+    		queStatus = 1  
+        where queId = #{queId}
+    </update>
+
+    <insert id="insertQue" useGeneratedKeys="true" keyProperty="queId"  parameterType="Que">
+        insert into que
+            (queType, source,difficulty,kaodian,creatorId,createTime,updaterId,updateTime,contentHtml,analysisHtml,answerHtml,queStatus)
+        values
+            (#{queType},#{source}, #{difficulty},#{kaodian},#{creatorId},#{createTime},#{updaterId},#{updateTime},#{contentHtml},#{analysisHtml},#{answerHtml},#{queStatus})
+    </insert>
+    
+    <update id="updateQue" parameterType="Que">
+        update
+            que
+        set
+            queType = #{queType }
+            , source = #{source }
+            , difficulty = #{difficulty }
+            , kaodian = #{kaodian }
+            , creatorId = #{creatorId }
+            , createTime = #{createTime }
+            , updaterId = #{updaterId }
+            , updateTime = #{updateTime }
+            , contentHtml = #{contentHtml }
+            , analysisHtml = #{analysisHtml }
+            , answerHtml = #{answerHtml }
+            , queStatus = #{queStatus }
+        where 
+            queId = #{queId }
+    </update>
+
+    <!-- QueChoice -->
+    <insert id="insertQueChoiceList" parameterType="java.util.List">
+        insert into que_choice
+            (queId, queChoiceHtml, isRightAnswer)
+        values
+            <foreach collection="list" item="item" index="index" separator="," >  
+            (#{item.queId},#{item.queChoiceHtml}, #{item.isRightAnswer})
+            </foreach> 
+    </insert>
+    
+    <delete id="deleteQueChoice" parameterType="QueChoice">
+        delete from que_choice 
+        where 
+           queId = #{queId} 
+           and queChoiceId = #{queChoiceId}
+    </delete>
+
+    <!-- QueZsd -->
+    <insert id="insertQueZsd" parameterType="java.util.List">
+        insert into que_zsd
+            (queId, zskId, zsd1Id, zsd2Id)
+        values
+            <foreach collection="list" item="item" index="index" separator="," >  
+	            (#{item.queId},#{item.zskId}, #{item.zsd1Id},#{item.zsd2Id})
+            </foreach> 
+    </insert>
+    
+    <delete id="deleteQueZsd" parameterType="QueZsd">
+        delete from que_zsd 
+        where 
+           queId = #{queId} 
+    </delete>
+
+    <select id="getQueZsd" resultType="QueZsd">
+        select 
+            *
+        from
+            que_zsd 
+        where queId = #{queId}
+    </select>
+    
+    
+    <update id="updateQueFeedBackStatus">
+        update
+            que_feedback 
+        set
+            isHandled = true 
+        where 
+            queId = #{queId}
+    </update>
+
+</mapper>

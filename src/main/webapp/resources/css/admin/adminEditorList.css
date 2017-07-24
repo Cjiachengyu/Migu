@@ -1,0 +1,19 @@
+.editor_list_holder {margin-left: 35%; }
+
+.editor_title {margin-top: 20px; font-size: 20px; }
+.title_editor_name {margin-left: 50px; }
+.title_prize {margin-left: 35px; }
+.title_que {margin-left: 20px;}
+
+.editor_item {margin-top: 10px; }
+.item_index {  display: inline-block;width: 45px;  padding-left: 10px;}
+.item_editor_name,.item_prize,.item_que {display: inline-block;text-align: center;}
+.item_editor_name {width: 125px;}
+.item_prize { width: 95px;}
+.item_que {  width: 100px;}
+
+.ok_btn_div { margin-top: 30px;width: 380px;}
+.ok_btn {display: inline-block;  float: right;margin-right: 10px;width: 58px;height: 28px;background: rgb(213, 127, 116);
+         border: none;border-radius: 20px;padding-left: 20px;padding-top: 4px;}
+
+

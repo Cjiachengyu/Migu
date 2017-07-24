@@ -1,0 +1,19 @@
+.already_grabbed_bag_info {width: 100%; padding-top: 5px;}
+.already_grabbed_bag_info .bag_info { text-align: center; padding: 10px 0; border-bottom: 1.5px solid lightgray; margin: 0 30px;}
+.already_grabbed_bag_info .bag_info_text {vertical-align: middle;}
+.already_grabbed_bag_info .bag_stt_btn { display: inline-block; width: 30px; height: 30px; vertical-align: middle; background-image: url("../../../../image/user/grabbag/bag_stt_btn.png"); background-size: contain; position: relative; top: -1px;}
+
+.already_grabbed_bag_list { padding-top: 10px;padding-bottom:10px;}
+.already_grabbed_bag_list .nobody_grab { text-align: center; padding: 10px 0 30px 0; }
+
+.already_grabbed_bag_item { padding: 8px 5%;}
+.already_grabbed_bag_item .user_portrait_div { float: left; width: 50px; height: 50px; padding: 0 5% 0 5%;}
+.already_grabbed_bag_item .user_portrait { width: 50px; height: 50px; border: none; border-radius: 50px;}
+.already_grabbed_bag_item .middle_div {width: 35%; float: left;}
+.already_grabbed_bag_item .user_name { padding: 0 0 5px 0;}
+.already_grabbed_bag_item .bag_end_time { color: gray; font-size: 15px; }
+.already_grabbed_bag_item .bag_money { float: left; padding: 5px; color: red;width: 60px;}
+.already_grabbed_bag_item .bag_right_answer_count { float: left; padding: 5px; width: 60px;}
+.already_grabbed_bag_item .operation_holder { padding: 2px 0;position: relative; float: left; }
+.already_grabbed_bag_item .laugh_or_praise_btn { float: left; width: 25px; height: 25px; border-radius: 20px;}
+.already_grabbed_bag_item .praise_or_laugh_count { color: red; width: 10px; height: 10px; position: absolute; top: -4px; right: -6px; text-align: center; font-size: 10px;}

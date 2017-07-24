@@ -1,0 +1,54 @@
+/* common */
+body {background: #ff4444; color: white; }
+.create_bag_step1_top, .create_bag_step2_top { width: 100%; }
+.next_step_btn_holder { margin-bottom: 50px; padding: 10px; text-align: center; }
+.next_step_btn_2 { border-radius: 8px; box-shadow: 1px 1px 2px 0px #222; background: red; padding: 10px; margin: 10px; width: 130px; display: inline-block; font-weight: bold; color: white; }
+
+/* 第1步 */
+.select_input_row { background: white; color: black; border-radius: 8px; margin: 15px 5%; }
+.select_input_col1 {display: inline-block; float: left; background: #eee; border-radius: 8px 0 0 8px; width: 31%; padding: 10px 2%;}
+.select_input_col2 {padding: 10px 0 10px 4%; display: inline-block; float: left; width: 50%; white-space: nowrap; text-overflow: ellipsis; overflow: hidden;}
+.select_input_col3 { padding: 10px; float: right; font-weight: bold; color: orangered; }
+.select_input_col_2_3 { padding: 10px 4%; display: inline-block; float: left; width: 57%;}
+
+.zhuanfa_holder { text-align: center; margin: 15px; }
+.zhuanfa_holder a, .zhuanfa_holder a:visited { display: inline-block; background: rgb(255, 136, 0); color: white; border-radius: 8px; padding: 5px 12px; }
+
+.zsk_list_holder_only { padding: 0 15px 15px 15px; }
+.zsk_list_holder { padding: 0 15px 15px 15px; height: 180px; border-bottom: solid 2px rgb(255, 136, 0); overflow-y: auto;}
+.zsd1_list_holder {padding: 15px; }
+.zsd2_list_holder {padding: 15px; }
+.zsl { padding: 2px 5px; border-bottom: 1px solid rgb(223, 223, 223); margin: 10px 2px 2px; text-align: center;}
+.zsd_btn {  padding: 2px 5px; display: inline-block; margin: 2px; font-size: 17px; color: orangered;}
+
+.btn_difficulty { font-size: 14px; padding: 2px 2%; margin: -2px 1%; text-align: center; border-radius: 5px; width: 19%; display: inline-block;}
+.btn_difficulty_selected{ background: #ff4444; color: white; }
+
+/* 第2步 */
+.set_bag_info_holder { margin: 10px 0;}
+.setting_title { font-weight: bold; display: block; padding: 2%;}
+.bag_info { margin: 0 5%; }
+.setting_row { padding: 5px 0; color: black; background: white; border-radius: 5px; margin: 10px;}
+.setting_row_short { padding: 5px 0; margin: 0 10px; text-align: right; font-size: small;}
+.s2_col_1 { width: 35%; display: inline-block; float: left; padding: 5px 0 5px 10px; }
+.s2_col_2 { width: 45%; display: inline-block; float: left;}
+.s2_col_3 { width: 15%; display: inline-block; float: left; padding: 5px 0;}
+#bagCount, #bagMoney { padding: 5px 2%; margin: 0 2%; font-size: 17px; width: 85%; outline: none; border: none; text-align: right;}
+#bagMsg { padding: 5px 2%; margin: 0 2%; font-size: 17px; outline: none; border: none; }
+
+.set_bag_type_holder { margin: 0 0 20px 0;}
+.bag_type_btn_holder {text-align: center; }
+.bag_type_btn { background: red; padding: 5px; display: inline-block; color: white;}
+
+#create_bag_step2_tip {padding: 0px 30px 10px 30px; font-size: 15px;}
+#create_bag_step2_tip strong {color: yellow; font-size: 17px; padding: 0 3px;}
+
+
+/* 第3步 */
+.share_tip_holder {padding: 50px 5%; text-align: center; margin-top: 150px;}
+.share_tip { font-size: x-large; font-weight: bold; display: block; margin: 20px 0; }
+.share_tip_mask_holder { display: none; position: fixed; left: 0; right: 0; bottom: 0; top: 0; background-color: #ffa6a6; height: 100%; }
+.share_tip_mask {width: 100%; }
+.created_bag_info { display: block; padding: 10px; }
+
+

@@ -1,0 +1,14 @@
+.prize_holder { margin: 30px auto; width: 500px;}
+
+.prize_image_div_box { float: left; }
+.prize_image_div_top img {width: 150px; height: 150px; border: none; }
+
+.prize_info_holder { float: left; padding-left: 20px; }
+.prize_name_div, .prize_money_div { padding: 8px 5px; }
+.prize_name_div span, .prize_money_div span { padding: 5px; }
+.prize_name_div input, .prize_money_div input { padding: 5px; width: 200px; font-size: 17px; }
+.prize_image_div { padding: 5px; }
+.pick_image_btn { padding: 5px; border: solid 1px lightgray; width: 302px; font-size: 17px; }
+
+.ok_btn_holder { padding: 15px 0; }
+.ok_btn {padding: 5px; width: 100%; }

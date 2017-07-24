@@ -1,0 +1,1460 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.eclassmate.qzy.persistence.BagMapper">
+
+    <!-- 公共resultMap ================================================================================ -->
+    <!-- User -->
+    <resultMap id="userMap" type="User">
+        <id property="userId" column="userId"/>
+        <result property="userName" column="userName"/>
+        <result property="openId" column="openId"/>
+        <result property="registerTime" column="registerTime"/>
+        <result property="updateWeixinTime" column="updateWeixinTime"/>
+        <result property="lastLoginTime" column="lastLoginTime"/>
+        <result property="gender" column="gender"/>
+        <result property="portrait" column="portrait"/>
+        <result property="city" column="city"/>
+        <result property="province" column="province"/>
+        <result property="country" column="country"/>
+        <result property="money" column="money"/>
+
+        <result property="rightAnswerCount" column="rightAnswerCount"/>
+        <result property="sentMoney" column="sentMoney"/>
+    </resultMap>
+
+    <!-- ZsdCatalog -->
+    <resultMap id="zsdCatalogMap" type="ZsdCatalog">
+        <id property="zskId" column="zskId"/>
+        <id property="zsd1Id" column="zsd1Id"/>
+        <id property="zsd2Id" column="zsd2Id"/>
+        <result property="zskName" column="zskName"/>
+        <result property="zsd1Name" column="zsd1Name"/>
+        <result property="zsd2Name" column="zsd2Name"/>
+    </resultMap>
+
+    <!-- QueChoice -->
+	<resultMap id="queChoiceMap" type="QueChoice">
+	  	<id property="queChoiceId" column="queChoiceId"/>
+	  	<result property="queId" column="queId"/>
+	  	<result property="queChoiceHtml" column="queChoiceHtml"/>
+	  	<result property="isRightAnswer" column="isRightAnswer"/>
+	</resultMap>
+
+	<!-- Que -->
+	<resultMap id="queMap" type="Que">
+	  	<id property="queId" column="queId"/>
+	  	<result property="queType" column="queType"/>
+	  	<result property="source" column="source"/>
+	  	<result property="kaodian" column="kaodian"/>
+	  	<result property="difficulty" column="difficulty"/>
+	  	<result property="creatorId" column="creatorId"/>
+	  	<result property="createTime" column="createTime"/>
+	  	<result property="updaterId" column="updaterId"/>
+	  	<result property="updateTime" column="updateTime"/>
+	  	<result property="contentHtml" column="contentHtml"/>
+	  	<result property="analysisHtml" column="analysisHtml"/>
+        <result property="answerHtml" column="answerHtml"/>
+	  	<result property="queStatus" column="queStatus"/>
+	</resultMap>
+
+    <resultMap id="queWithQueChoiceListMap" type="Que" extends="queMap">
+        <collection property="queChoiceList" resultMap="queChoiceMap"></collection>
+    </resultMap>
+
+    <resultMap id="queWithZsdCatalogMap" type="Que" extends="queMap">
+        <collection property="zsdCatalogList" resultMap="zsdCatalogMap"></collection>
+    </resultMap>
+    
+    <resultMap id="queWithQueChoiceListAndZsdCatalogMap" type="Que" extends="queMap">
+    	<collection property="queChoiceList" resultMap="queChoiceMap"></collection>
+        <collection property="zsdCatalogList" resultMap="zsdCatalogMap"></collection>
+    </resultMap>
+
+	<!-- Bag -->
+	<resultMap id="bagMap" type="Bag">
+	  	<id property="bagId" column="bagId"/>
+        <result property="bagCategory" column="bagCategory"/>
+        <result property="bagStatus" column="bagStatus"/>
+        <result property="bagCount" column="bagCount"/>
+	  	<result property="bagMoney" column="bagMoney"/>
+	  	<result property="bagType" column="bagType"/>
+	  	<result property="bagMsg" column="bagMsg"/>
+	  	<result property="creatorId" column="creatorId"/>
+	  	<result property="createTime" column="createTime"/>
+	  	<result property="zskId" column="zskId"/>
+	  	<result property="zsd1Id" column="zsd1Id"/>
+	  	<result property="zsd2Id" column="zsd2Id"/>
+        <result property="grabbedCount" column="grabbedCount"/>
+        <result property="sentCount" column="sentCount"/>
+        <result property="sentMoney" column="sentMoney"/>
+        <result property="returnedMoney" column="returnedMoney"/>
+	</resultMap>
+
+    <resultMap id="bagWithCreatorMap" type="Bag" extends="bagMap">
+        <association property="creator" resultMap="userMap"></association>
+    </resultMap>
+
+	<!-- UserAnswer -->
+	<resultMap id="userAnswerMap" type="UserAnswer">
+	  	<id property="userId" column="userId"/>
+	  	<id property="bagId" column="bagId"/>
+	  	<id property="queId" column="queId"/>
+	  	<result property="beginAnswerTime" column="beginAnswerTime"/>
+	  	<result property="endAnswerTime" column="endAnswerTime"/>
+	  	<result property="consumeTime" column="consumeTime"/>
+	  	<result property="userChoiceId" column="userChoiceId"/>
+	  	<result property="isUserRight" column="isUserRight"/>
+	</resultMap>
+
+	<!-- UserBag -->
+	<resultMap id="userBagMap" type="UserBag">
+	  	<id property="userId" column="userId"/>
+	  	<id property="bagId" column="bagId"/>
+	  	<result property="beginBagTime" column="beginBagTime"/>
+	  	<result property="endBagTime" column="endBagTime"/>
+	  	<result property="userBagStatus" column="userBagStatus"/>
+	  	<result property="gotMoney" column="gotMoney"/>
+        <result property="hasPaidAnalysis" column="hasPaidAnalysis"/>
+
+        <result property="rightAnswerCount" column="rightAnswerCount"/>
+        <result property="praiseOrLaughCount" column="praiseOrLaughCount"/>
+	</resultMap>
+	
+	<!-- Zsd2 -->
+	<resultMap id="zsd2Map" type="Zsd2">
+	  	<id property="zsd2Id" column="zsd2Id"/>
+	  	<result property="zsd2Name" column="zsd2Name"/>
+	  	<result property="zsd1Id" column="zsd1Id"/>
+	</resultMap>
+	
+	<!-- Zsd1 -->
+	<resultMap id="zsd1Map" type="Zsd1">
+	  	<id property="zsd1Id" column="zsd1Id"/>
+	  	<result property="zsd1Name" column="zsd1Name"/>
+	  	<result property="zskId" column="zskId"/>
+	</resultMap>
+	
+	<resultMap id="zsd1WithZsd2ListMap" type="Zsd1" extends="zsd1Map">
+	  	<collection property="zsd2List" resultMap="zsd2Map"></collection>
+	</resultMap>
+	
+	<!-- Prize -->
+	<resultMap id="prizeMap" type="Prize">
+	  	<id property="prizeId" column="prizeId"/>
+	  	<result property="prizeName" column="prizeName"/>
+	  	<result property="prizeImage" column="prizeImage"/>
+	  	<result property="prizeMoney" column="prizeMoney"/>
+	</resultMap>
+	
+	<!-- UserPrize -->
+	<resultMap id="userPrizeMap" type="UserPrize">
+	  	<id property="userId" column="userId"/>
+	  	<id property="prizeId" column="prizeId"/>
+	  	<result property="prizeCount" column="prizeCount"/>
+	</resultMap>
+	
+    <resultMap id="userPrizeWithPrizeMap" type="UserPrize" extends="userPrizeMap">
+        <association property="prize" resultMap="prizeMap"></association>
+    </resultMap>
+    
+    <!-- Gift -->
+	<resultMap id="giftMap" type="Gift">
+	  	<id property="giftId" column="giftId"/>
+	  	<result property="prizeId" column="prizeId"/>
+	  	<result property="senderId" column="senderId"/>
+	  	<result property="receiverId" column="receiverId"/>
+	  	<result property="sendTime" column="sendTime"/>
+	  	<result property="receiveTime" column="receiveTime"/>
+	</resultMap>
+	
+	<resultMap id="giftWithPrizeAndSenderMap" type="Gift" extends="giftMap">
+        <association property="prize" resultMap="prizeMap"></association>
+        <association property="sender" resultMap="userMap"></association>
+    </resultMap>
+
+	<resultMap id="giftWithPrizeAndReceiverMap" type="Gift" extends="giftMap">
+        <association property="prize" resultMap="prizeMap"></association>
+        <association property="receiver" resultMap="userMap"></association>
+    </resultMap>
+
+    <select id="getUserForGift" parameterType="int" resultType="User">
+        select *
+        from user
+        where user.userId = #{receiverId}
+    </select>
+
+    <resultMap id="giftWithPrizeAndSenderAndReceiverMap" type="Gift" extends="giftMap">
+        <association property="prize" resultMap="prizeMap"></association>
+        <association property="sender" resultMap="userMap"></association>
+        <association property="receiver" javaType="User" column="receiverId" select="getUserForGift"></association>
+    </resultMap>
+
+    <!-- 创建红包 ================================================================================ -->
+    <select id="getCreateBagCount" resultType="int">
+        select
+            count(*) 
+        from
+            bag 
+        where 
+            creatorId = #{userId}
+            and bagCategory = 1 
+            and createTime > #{zeroTimeToday}
+    </select>
+    
+    <insert id="insertBag" useGeneratedKeys="true" keyProperty="bagId" parameterType="Bag">
+        insert into bag
+            (bagCategory, bagStatus, creatorId, createTime, bagType, bagMoney, bagCount, bagMsg,
+            zskId, zsd1Id, zsd2Id)
+        values
+            (#{bagCategory}, #{bagStatus}, #{creatorId}, #{createTime}, #{bagType}, #{bagMoney}, #{bagCount}, #{bagMsg},
+            #{zskId}, #{zsd1Id}, #{zsd2Id})
+    </insert>
+
+    <insert id="insertBagQue" parameterType="java.util.List">
+        insert into bag_que
+            (bagId, queId)
+        values
+            <foreach collection="list" item="item" index="index" separator=",">
+                (#{item.bagId}, #{item.queId})
+            </foreach>
+    </insert>
+
+
+    <!-- 抢作业 ================================================================================ -->
+    <!-- 尝试获取UserBag，看用户是不是已经抢过了 -->
+    <select id="getUserBag" resultType="UserBag">
+        select
+            *
+        from
+            user_bag
+        where
+            userId = #{userId}
+            and bagId = #{bagId}
+    </select>
+
+    <!-- 抢一个红包时，获取红包信息以及alreadySentValue和题目信息 -->
+    <resultMap id="getBagForUserGrabBagMap" type="Bag" extends="bagMap">
+    	<association property="zsdCatalog" resultMap="zsdCatalogMap"></association>
+        <collection property="queList" resultMap="queWithQueChoiceListAndZsdCatalogMap"></collection>
+    </resultMap>
+    <select id="getBagForUserGrabBag" resultMap="getBagForUserGrabBagMap">
+        select
+            bag.*
+            , que.*
+		    , que_choice.*
+		    , zsk.*
+			, zsd_1.*
+			, zsd_2.*
+        from
+            bag
+            join bag_que using (bagId)
+		    join que using (queId)
+		    join que_choice using (queId)
+		    left join zsk using(zskId)
+			left join zsd_1 using(zsd1Id)
+			left join zsd_2 using(zsd2Id)
+        where
+            bagId = #{bagId}
+    </select>
+    
+    <!-- 抢一个红包时，看已经有哪些用户抢到这个红包了 -->
+    <resultMap id="getAlreadyGrabbedUserBagListMap" type="UserBag" extends="userBagMap">
+	  	<association property="user" resultMap="userMap"></association>
+	  	<association property="bag" resultMap="bagMap"></association>
+	</resultMap>
+    <select id="getAlreadyGrabbedUserBagList" resultMap="getAlreadyGrabbedUserBagListMap">
+        select
+            user_bag.*
+            , bag.*
+            , user.userName as userName
+            , user.portrait as portrait
+            ,(
+                select
+                    count(*)
+                from
+                    user_answer
+                where
+                    user_bag.bagId=user_answer.bagId
+                    and user_bag.userId=user_answer.userId
+                    and isUserRight = 1
+            ) as rightAnswerCount
+            ,(
+            	select
+                    count(*)
+                from
+                    show_grab_bag 
+                where 
+                	user_bag.bagId=show_grab_bag.bagId
+                    and user_bag.userId=show_grab_bag.userId
+                    and (showGrabBagType = 2 or showGrabBagType = 3)
+            ) as praiseOrLaughCount 
+        from
+            user_bag
+            join bag using (bagId)
+            join user on user_bag.userId = user.userId
+        where
+            user_bag.bagId = #{bagId}
+            and user_bag.userBagStatus in(1,2,3,4,7)
+        order by
+            user_bag.endBagTime asc
+    </select>
+
+    <select id="getUserAnswer" resultType="UserAnswer">
+        select
+            *
+        from
+            user_answer
+        where
+            userId = #{userId}
+            and bagId = #{bagId}
+            and queId = #{queId}
+    </select>
+
+    <insert id="insertUserAnswer" parameterType="UserAnswer">
+        insert into user_answer
+            (userId, bagId, queId, beginAnswerTime, endAnswerTime, consumeTime, userChoiceId, isUserRight)
+        values
+            (#{userId}, #{bagId}, #{queId}, #{beginAnswerTime}, #{endAnswerTime}, #{consumeTime}, #{userChoiceId}, #{isUserRight})
+    </insert>
+
+    <update id="updateUserAnswer" parameterType="UserAnswer">
+        update
+            user_answer
+        set
+            beginAnswerTime = #{beginAnswerTime }
+            , endAnswerTime = #{endAnswerTime }
+            , consumeTime = #{consumeTime }
+            , userChoiceId = #{userChoiceId }
+            , isUserRight = #{isUserRight }
+        where
+            userId = #{userId}
+            and bagId = #{bagId }
+            and queId = #{queId }
+    </update>
+
+    <insert id="insertUserBag" parameterType="UserBag">
+        insert into user_bag
+            (userId, bagId, beginBagTime, endBagTime, userBagStatus, gotMoney, hasPaidAnalysis)
+        values
+            (#{userId}, #{bagId}, #{beginBagTime}, #{endBagTime}, #{userBagStatus}, #{gotMoney}, #{hasPaidAnalysis})
+    </insert>
+
+    <update id="updateUserBag" parameterType="UserBag">
+        update
+            user_bag
+        set
+            beginBagTime = #{beginBagTime}
+            , endBagTime = #{endBagTime}
+            , userBagStatus = #{userBagStatus}
+            , gotMoney = #{gotMoney}
+            , hasPaidAnalysis = #{hasPaidAnalysis}
+        where
+            userId = #{userId}
+            and bagId = #{bagId}
+    </update>
+
+    <update id="updateBag" parameterType="Bag">
+        update
+            bag
+        set 
+        	bagStatus = ${bagStatus}
+            ,grabbedCount = #{grabbedCount}
+            , sentCount = #{sentCount}
+            , sentMoney = #{sentMoney}
+            , returnedMoney = #{returnedMoney}
+        where
+            bagId = #{bagId}
+    </update>
+
+
+    <!-- 红包列表 ================================================================================ -->
+    <!-- 我发出的红包列表，每个红包包括已经发出多少份了 -->
+    <resultMap id="getMySentBagListMap" type="Bag" extends="bagMap">
+        <association property="zsdCatalog" resultMap="zsdCatalogMap"></association>
+    </resultMap>
+    <select id="getMySentBagList" resultMap="getMySentBagListMap">
+        select
+            bag.*
+            , zsk.*
+            , zsd_1.*
+            , zsd_2.*
+        from
+            bag
+            join user on bag.creatorId = user.userId
+            left join zsk using(zskId)
+            left join zsd_1 using(zsd1Id)
+            left join zsd_2 using(zsd2Id)
+        where
+            bag.creatorId = #{userId} 
+            and bagCategory = 1
+        order by
+            bag.createTime desc
+    </select>
+
+    <resultMap id="getMyGotBagListMap" type="UserBag" extends="userBagMap">
+	  	<association property="bag" resultMap="bagWithCreatorMap"></association>
+	</resultMap>
+	<select id="getMyGotBagList" resultMap="getMyGotBagListMap">
+        select
+            bag.*
+            , user_bag.*
+            , user.userName
+        from
+            bag
+            join user_bag using (bagId)
+            join user on bag.creatorId = user.userId
+        where
+            user_bag.userId = #{userId}
+            and user_bag.userBagStatus = 1 
+            and bagCategory = 1
+        order by
+            user_bag.endBagTime desc
+    </select>
+
+
+    <!-- 排行榜 ================================================================================ -->
+    <!-- 学霸榜 -->
+    <select id="getUserRightAnswerCountRankList" resultType="User">
+        select
+            user.* 
+        from
+            user 
+        order by
+            rightAnswerCount desc
+        limit
+            #{limitRank}
+    </select>
+
+    <select id="getUserRightAnswerCountRankListInFriend" resultType="User">
+        select
+            user.* 
+        from
+            user
+        where
+            userId in (select friendId from user_friend where userId = #{userId})
+            or userId = #{userId}
+        order by
+            weekRightAnswerCount desc
+    </select>
+
+    <select id="getUserRightAnswerCountRank" parameterType="int" resultType="int">
+        select
+            (
+                select count(*)
+                from user 
+                where user.rightAnswerCount > tmp_user.rightAnswerCount
+            ) + 1 as myRank
+        from
+            user as tmp_user
+        where
+            tmp_user.userId = #{userId}
+    </select>
+
+    <select id="getUserRightAnswerCount" parameterType="int" resultType="int">
+        select
+            count(*)
+        from
+            user_answer
+        where
+            isUserRight = 1
+            and userId=#{userId}
+    </select>
+
+    <select id="getUserRightAnswerCountByTime" parameterType="int" resultType="int">
+        select
+            ifnull(weekRightAnswerCount, 0) 
+        from
+            user 
+        where 
+            userId=#{userId}
+    </select>
+
+    <!-- 财富榜 -->
+    <select id="getUserMoneyRankList" resultType="User">
+        select
+            user.*
+        from
+            user
+        order by
+            money desc
+        limit
+            #{limitRank}
+    </select>
+    
+     <!-- 好友间财富榜 -->
+    <select id="getUserMoneyRankListInFriend" parameterType="int" resultType="User">
+        select
+            user.*
+        from
+            user
+        where 
+            userId in (select friendId from user_friend where userId = #{userId})
+        	or userId = #{userId}
+        order by
+            money desc
+        limit
+            #{limitRank}
+    </select>
+
+    <select id="getMyMoneyRank" parameterType="int" resultType="int">
+        select
+            (
+                select count(*)
+                from user
+                where user.money > tmp_user.money
+            ) + 1 as myRank
+        from
+            user as tmp_user
+        where 
+            tmp_user.userId = #{userId}
+    </select>
+    
+     <select id="getMyMoneyRankInFriends" parameterType="int" resultType="int">
+        select
+            (
+                select count(*)
+                from user
+                where user.money > tmp_user.money
+                	and user.userId in (select friendId from user_friend where userId = #{userId})
+            ) + 1 as myRank
+        from
+            user as tmp_user
+        where 
+            tmp_user.userId = #{userId}
+    </select>
+
+    <!-- 豪气榜 -->
+    <select id="getUserSentMoneyRankList" resultType="User">
+        select
+            user.* 
+        from
+            user 
+        order by
+            sentMoney desc
+        limit
+            #{limitRank}
+    </select>
+    
+    <!-- 好友间豪气榜，按星期统计 -->
+    <select id="getUserSentMoneyRankListInFriend" resultType="User">
+        select
+            user.* 
+        from
+            user
+        where
+            userId in (select friendId from user_friend where userId = #{userId})
+            or userId = #{userId}
+        order by
+            weekSentMoney desc
+    </select>
+
+    <select id="getUserSentMoneyRank" parameterType="int" resultType="int">
+        select
+            (
+                select count(*)
+                from user 
+                where user.sentMoney > temp_user.sentMoney
+            ) + 1 as myRank
+        from
+            user as temp_user
+        where
+            temp_user.userId = #{userId}
+    </select>
+
+    <select id="getUserSentMoney" resultType="int">
+        select
+            ifnull(sentMoney, 0)
+        from
+            user 
+        where
+            user.userId = #{userId}
+    </select>
+
+    <select id="getUserSentMoneyByTime" resultType="int">
+       	select 
+            ifnull(weekSentMoney, 0)
+        from
+            user 
+        where
+            userId = #{userId} 
+    </select>
+
+    <!-- 返币榜 -->
+    <select id="getUserReturnedMoneyRankList" resultType="User">
+        select
+            user.* 
+        from
+            user 
+        order by
+            returnedMoney desc
+        limit
+            #{limitRank}
+    </select>
+
+    <!-- 好友间返币榜，按星期统计 -->
+    <select id="getUserReturnedMoneyRankListInFriend" resultType="User">
+        select
+            user.* 
+        from
+            user
+        where
+            userId in (select friendId from user_friend where userId = #{userId})
+            or userId = #{userId}
+        order by
+            weekReturnedMoney desc
+    </select>
+
+    <select id="getUserReturnedMoneyRank" parameterType="int" resultType="int">
+        select
+            (
+                select count(*)
+                from user 
+                where user.returnedMoney > temp_user.returnedMoney
+            ) + 1 as myRank
+        from
+            user as temp_user
+        where
+            temp_user.userId = #{userId}
+    </select>
+
+    <select id="getUserReturnedMoney" resultType="int">
+        select
+            ifnull(returnedMoney, 0)
+        from
+            user 
+        where
+            user.userId = #{userId}
+    </select>
+
+    <select id="getUserReturnedMoneyByTime" resultType="int">
+        select
+            ifnull(weekReturnedMoney, 0)
+        from
+            user 
+        where
+            userId = #{userId}
+    </select>
+
+	<!-- 消费榜 -->
+    <select id="getUserSpentMoneyRankList" resultType="User">
+        select
+            user.* 
+        from
+            user 
+        order by
+            spentMoney desc
+        limit
+            #{limitRank}
+    </select>
+
+    <select id="getUserSpentMoneyRank" parameterType="int" resultType="int">
+        select
+            (
+                select count(*)
+                from user 
+                where user.spentMoney > temp_user.spentMoney
+            ) + 1 as myRank
+        from
+            user as temp_user 
+        where
+            temp_user.userId = #{userId}
+    </select>
+    
+    <select id="getUserSpentMoney" resultType="int">
+        select
+            ifnull(spentMoney, 0)
+        from
+            user 
+        where
+            user.userId = #{userId}
+    </select>
+    
+    <!-- 好友间消费榜，按星期统计 -->
+    <select id="getUserSpentMoneyRankListInFriend" resultType="User">
+        select
+            user.* 
+        from
+            user
+        where
+            user.userId in (select user_friend.friendId from user_friend where user_friend.userId = #{userId})
+            or user.userId = #{userId}
+        order by
+            weekSpentMoney desc
+    </select>
+    
+    <select id="getUserSpentMoneyByTime" resultType="int">
+       	select 
+            ifnull(weekSpentMoney, 0)
+        from
+            user  
+        where
+            userId = #{userId} 
+    </select>
+    
+    <!-- 单个作业的统计 ================================================================================ -->
+    <!-- 查看哪些用户抢过这个红包 -->
+    <resultMap id="getUserBagForUserBagSttMap" type="UserBag" extends="userBagMap">
+        <association property="user" resultMap="userMap"></association>
+        <collection property="userAnswerList" resultMap="userAnswerMap"></collection>
+    </resultMap>
+    <select id="getUserBagForUserBagStt" resultMap="getUserBagForUserBagSttMap">
+        select
+            user_bag.*
+            , user.userName
+            , user.portrait
+            , user_answer.*
+            , (
+                select
+                    count(*)
+                from
+                    user_answer
+                where
+                    user_bag.bagId=user_answer.bagId
+                    and user_bag.userId=user_answer.userId
+                    and isUserRight = 1
+            ) as rightAnswerCount
+        from
+            user_bag
+            join user_answer using(userId, bagId)
+            join user using(userId)
+        where
+            user_bag.bagId = #{bagId}
+            and user_bag.userBagStatus != 0
+    </select>
+
+
+    <!-- 学习报告 ================================================================================ -->
+    <select id="getUserAnswersByTimespan" resultType="UserAnswer">
+        select
+            user_answer.*
+        from
+            user_answer
+        where
+            userId = #{userId}
+            and beginAnswerTime > #{beginTime}
+            and #{endTime} > beginAnswerTime
+    </select>
+
+    <resultMap id="getUserAnswersForStudyReportMap" type="UserAnswer" extends="userAnswerMap">
+        <association property="que" resultMap="queWithZsdCatalogMap"></association>
+    </resultMap>
+    <select id="getUserAnswersForStudyReport" resultMap="getUserAnswersForStudyReportMap">
+        select
+            user_answer.*
+            , que_zsd.*
+            ,zsk.*
+			,zsd_1.*
+			,zsd_2.*
+        from
+            user_answer
+            left join que_zsd using (queId)
+            left join zsk using(zskId)
+			left join zsd_1 using(zsd1Id)
+			left join zsd_2 using(zsd2Id)
+        where
+            userId = #{userId} 
+        order by 
+            user_answer.endAnswerTime desc
+    </select>
+    
+	<select id="getAllTwoLevelZsdsForStudyReport" resultMap="zsd1WithZsd2ListMap">
+		select
+			zsd_1.*
+			, zsd_2.*
+        from
+			zsd_1 
+			left join zsd_2 using(zsd1Id)
+	</select>
+
+	<select id="getAllUserStarByUserId" resultType="UserStar">
+		select
+			* 
+        from
+			user_star 
+		where userId = #{userId} 
+	</select>
+	
+	<select id="getAllUserMoonByUserId" resultType="UserMoon">
+		select
+			* 
+        from
+			user_moon  
+		where userId = #{userId} 
+	</select>
+    
+    <insert id="insertUserStar" parameterType="UserStar">
+        insert into user_star
+            (userId, zskId,zsd1Id,zsd2Id,star1Status,star2Status,star3Status)
+        values
+            (#{userId},#{zskId}, #{zsd1Id},#{zsd2Id},#{star1Status},#{star2Status},#{star3Status})
+    </insert>
+    
+    <insert id="insertUserMoon" parameterType="UserMoon">
+        insert into user_moon 
+            (userId, zskId,zsd1Id,moon1Status,moon2Status,moon3Status)
+        values
+            (#{userId},#{zskId}, #{zsd1Id},#{moon1Status},#{moon2Status},#{moon3Status})
+    </insert>
+    
+    <select id="getUserStar" resultType="UserStar">
+		select 
+			* 
+        from 
+			user_star 
+		where userId = #{userId} 
+			  and zskId = #{zskId} 
+			  and zsd1Id = #{zsd1Id} 
+			  and zsd2Id = #{zsd2Id} 
+	</select>
+	
+	<select id="getUserMoon" resultType="UserMoon">
+		select 
+			* 
+        from 
+			user_moon  
+		where userId = #{userId} 
+			  and zskId = #{zskId} 
+			  and zsd1Id = #{zsd1Id}
+	</select>
+    
+    <update id="updateUserStar" parameterType="UserStar">
+		update 
+            user_star 
+		set 
+            star1Status=#{star1Status}
+            , star2Status=#{star2Status}
+            , star3Status=#{star3Status} 
+		where userId = #{userId} 
+			  and zskId = #{zskId} 
+			  and zsd1Id = #{zsd1Id} 
+			  and zsd2Id = #{zsd2Id} 
+	</update>
+	
+	<update id="updateUserMoon" parameterType="UserMoon">
+		update 
+            user_moon  
+		set 
+            moon1Status=#{moon1Status}
+            , moon2Status=#{moon2Status}
+            , moon3Status=#{moon3Status} 
+		where userId = #{userId} 
+			  and zskId = #{zskId} 
+			  and zsd1Id = #{zsd1Id}
+	</update>
+	
+	<!-- learning reports =============== -->
+	<select id="getUserAnswersForLearningReport" resultMap="getUserAnswersForStudyReportMap">
+        select
+            user_answer.*
+            , que_zsd.*
+            ,zsk.*
+			,zsd_1.*
+			,zsd_2.*
+        from
+            user_answer
+            left join que_zsd using (queId)
+            left join zsk using(zskId)
+			left join zsd_1 using(zsd1Id)
+			left join zsd_2 using(zsd2Id)
+        where
+            userId = #{userId} 
+            and user_answer.endAnswerTime > #{beginTime} 
+        order by 
+            user_answer.endAnswerTime desc
+    </select>
+    
+   
+   <!-- study statistics =============== -->
+	<select id="getAllUserAnswers" resultMap="getUserAnswersForStudyReportMap">
+        select
+            user_answer.*
+            , que_zsd.*
+            ,zsk.*
+			,zsd_1.*
+			,zsd_2.*
+        from
+            user_answer
+            left join que_zsd using (queId)
+            left join zsk using(zskId)
+			left join zsd_1 using(zsd1Id)
+			left join zsd_2 using(zsd2Id)
+        where
+            user_answer.endAnswerTime > #{beginTime} 
+        order by 
+            user_answer.endAnswerTime desc
+    </select>
+    
+    <select id="getAllUserAnswer" resultType="UserAnswer">
+        select
+            * 
+        from
+            user_answer
+    </select>
+	
+	
+	<!-- 奖品兑换和我的收藏 ================================================================================ -->
+    <select id="getprizeList" resultType="Prize">
+		select 
+			* 
+        from 
+			prize  
+	</select>
+	
+    <select id="getUserPrize" resultType="UserPrize">
+		select 
+			* 
+        from 
+			user_prize 
+		where userId = #{userId} 
+			  and prizeId = #{prizeId} 
+	</select>
+	
+	<insert id="insertUserPrize" parameterType="UserPrize">
+        insert into user_prize 
+            (userId, prizeId, prizeCount)
+        values
+            (#{userId}, #{prizeId}, #{prizeCount})
+    </insert>
+	
+	<update id="updateUserPrize" parameterType="UserPrize">
+        update 
+            user_prize 
+        set 
+            prizeCount = #{prizeCount} 
+        where 
+            userId = #{userId} 
+            and prizeId = #{prizeId}
+    </update>
+    
+    <select id="getUserPrizeList" resultMap="userPrizeWithPrizeMap">
+		select 
+			*  
+        from 
+			user_prize 
+			join prize using (prizeId)
+		where 
+			userId = #{userId} 
+	</select>
+	
+	<delete id="deletePrize">
+		delete from 
+			prize 
+		where 
+			prizeId = #{prizeId} 
+	</delete>
+	
+	<insert id="insertPrize" useGeneratedKeys="true" keyProperty="prizeId" parameterType="Prize">
+        insert into prize 
+            (prizeName, prizeImage, prizeMoney)
+        values
+            (#{prizeName}, #{prizeImage}, #{prizeMoney})
+    </insert>
+    
+    <update id="updatePrize" parameterType="Prize">
+        update 
+            prize 
+        set 
+            prizeName = #{prizeName }
+            , prizeImage = #{prizeImage }
+            , prizeMoney = #{prizeMoney }
+        where 
+            prizeId = #{prizeId} 
+    </update>
+    
+    <select id="getPrize" resultType="Prize">
+		select 
+			* 
+        from 
+			prize  
+	    where 
+	    	prizeId = #{prizeId} 
+	</select>
+	
+
+	<!-- 赞美和嘲笑 ================================================================================ -->
+	<!-- UserAnswer -->
+	<resultMap id="userAnswerWithQueMap" type="UserAnswer" extends="userAnswerMap">
+	  	<association property="que" resultMap="queWithQueChoiceListMap"></association>
+	</resultMap>
+	
+	<resultMap id="getUserBagForShowMap" type="UserBag" extends="userBagMap">
+        <association property="user" resultMap="userMap"></association>
+    </resultMap>
+    
+    <select id="getUserBagForShow" resultMap="getUserBagForShowMap">
+        select
+            user_bag.*
+            , user.userId
+            , user.userName
+            , user.portrait
+            , (
+                select
+                    count(*)
+                from
+                    user_answer
+                where
+                    user_bag.bagId=user_answer.bagId
+                    and user_bag.userId=user_answer.userId
+                    and isUserRight = 1
+            ) as rightAnswerCount
+        from
+            user_bag
+            join user using(userId)
+        where
+            user_bag.bagId = #{bagId} 
+            and user_bag.userId = #{userId} 
+    </select>
+
+
+    <!-- 送礼 ================================================================================ -->
+    <insert id="insertGift" useGeneratedKeys="true" keyProperty="giftId" parameterType="Gift">
+        insert into gift 
+            (prizeId, senderId, receiverId, sendTime, receiveTime)
+        values
+            (#{prizeId}, #{senderId}, #{receiverId}, #{sendTime}, #{receiveTime})
+    </insert>
+    
+    <select id="getGift" resultMap="giftWithPrizeAndSenderMap">
+		select 
+			gift.* 
+			,prize.* 
+			,user.* 
+        from 
+			gift 
+			join prize using(prizeId) 
+			join user on gift.senderId=user.userId 
+	    where 
+	    	giftId = #{giftId} 
+	</select>
+	
+	<update id="updateGift" parameterType="Gift">
+        update 
+            gift  
+        set 
+            receiverId = #{receiverId }
+            , receiveTime = #{receiveTime }
+        where 
+            giftId = #{giftId} 
+    </update>
+	
+
+	<!-- 问题反馈 ================================================================================ -->
+	<select id="getQueFeedBack" resultType="QueFeedBack">
+		select 
+			* 
+        from 
+			que_feedback 
+		where userId = #{userId} 
+			  and queId = #{queId} 
+	</select>
+	
+	<insert id="insertQueFeedBack" parameterType="QueFeedBack">
+        insert into que_feedback
+            (userId,  queId, feedbackMsg)
+        values
+            (#{userId}, #{queId}, #{feedbackMsg})
+    </insert>
+    
+    <update id="updateQueFeedBack" parameterType="QueFeedBack">
+        update
+            que_feedback
+        set
+            feedbackMsg = #{feedbackMsg }
+        where
+            userId = #{userId}
+            and queId = #{queId }
+    </update>
+    
+    <!-- 礼品展示 ================================================================================ -->
+    <select id="getGiftSendList" resultMap="giftWithPrizeAndReceiverMap">
+		select 
+			gift.* 
+			,prize.* 
+			,user.* 
+        from 
+			gift 
+			join prize using(prizeId) 
+			left join user on gift.receiverId=user.userId 
+	    where 
+	    	gift.senderId = #{senderId} 
+	    order by sendTime desc
+	</select>
+
+	<select id="getGiftReceiveList" resultMap="giftWithPrizeAndSenderMap">
+		select
+			gift.*
+			,prize.*
+			,user.*
+        from
+			gift
+			join prize using(prizeId)
+			join user on gift.senderId=user.userId
+	    where
+	    	gift.receiverId = #{receiverId}
+	    order by receiveTime desc
+	</select>
+
+	<select id="getGiftListAll" resultMap="giftWithPrizeAndSenderAndReceiverMap">
+		select 
+			gift.* 
+			, prize.*
+			, user.*
+        from
+			gift 
+			join prize using(prizeId) 
+			join user on gift.senderId=user.userId
+	    where
+	    	gift.receiverId = #{userId}
+	    	or gift.senderId = #{userId}
+	    order by
+            sendTime desc
+	</select>
+
+	<!-- 用户中心 ================================================================================ -->
+	<select id="getBillList" resultType="Bill">
+		select 
+			bill.* 
+        from 
+			bill  
+	    where 
+	    	bill.userId = #{userId} 
+	    order by
+            createTime desc
+	    limit 
+	        #{returnAmount};
+	</select>
+
+	<insert id="insertBill" useGeneratedKeys="true" keyProperty="billId" parameterType="Bill">
+        insert into bill
+            (billType, userId, money, createTime, description)
+        values
+            (#{billType}, #{userId}, #{money}, #{createTime}, #{description})
+    </insert>
+
+
+    <!-- 过期红包 ================================================================================ -->
+    <select id="getTimeoutBagList" resultMap="bagWithCreatorMap">
+        select
+            bag.*
+            , user.*
+        from
+            bag
+            join user on bag.creatorId = user.userId
+        where
+            bagStatus = 1
+            and bagCategory = 1
+            and #{timeoutSeconds} > createTime
+    </select>
+    
+
+    <!-- 更新用户数据 ================================================================================ -->
+    <update id="updateGrabUserAnswerCount">
+		update 
+		    user 
+		set 
+		    answerCount = (
+		        select count(0) 
+		        from user_answer 
+		        where user_answer.userId = user.userId
+		    )
+		    , rightAnswerCount = (
+		        select count(0) 
+		        from user_answer 
+		        where user_answer.userId = user.userId and user_answer.isUserRight = 1
+		    )
+		where
+		    user.userId = #{userId}
+	</update>
+	
+	<update id="updateWeekGrabUserAnswerCount">
+		update 
+		    user 
+		set 
+		    weekAnswerCount = (
+		        select count(0) 
+		        from user_answer 
+		        where user_answer.userId = user.userId and user_answer.endAnswerTime > #{beginTime}
+		    )
+		    , weekRightAnswerCount = (
+		        select count(0) 
+		        from user_answer 
+		        where user_answer.userId = user.userId and user_answer.isUserRight = 1 and user_answer.endAnswerTime > #{beginTime}
+		    )
+		where
+		    user.userId = #{userId}
+	</update>
+	
+	<update id="updateWeekAnswerCountForQuartz">
+		update 
+		    user 
+		set 
+		    weekAnswerCount = (
+		        select count(0) 
+		        from user_answer 
+		        where user_answer.userId = user.userId and user_answer.endAnswerTime > #{beginTime}
+		    )
+		    , weekRightAnswerCount = (
+		        select count(0) 
+		        from user_answer 
+		        where user_answer.userId = user.userId and user_answer.isUserRight = 1 and user_answer.endAnswerTime > #{beginTime}
+		    )
+		where
+		    user.userId >= 0
+	</update>
+	
+	<update id="updateBagCreatorMoney">
+		update
+		    user
+		set
+		    sentMoney = (
+		        select sum(bag.sentMoney) 
+		        from bag 
+		        where bag.creatorId = user.userId
+		    )
+		    , returnedMoney = (
+		        select sum(bag.returnedMoney) 
+		        from bag 
+		        where bag.creatorId = user.userId
+		    )
+		where
+		    user.userId = #{userId}
+	</update>
+	
+	<update id="updateWeekBagCreatorMoney">
+		update
+		    user
+		set
+		    weekSentMoney = (
+		        select sum(bag.sentMoney) 
+		        from bag 
+		        where bag.creatorId = user.userId and bag.createTime > #{beginTime}
+		    )
+		    , weekReturnedMoney = (
+		        select sum(bag.returnedMoney) 
+		        from bag 
+		        where bag.creatorId = user.userId and bag.createTime > #{beginTime}
+		    )
+		where
+		    user.userId = #{userId}
+	</update>
+	
+	<update id="updateWeekMoneyForQuartz">
+		update
+		    user
+		set
+		    weekSentMoney = (
+		        select sum(bag.sentMoney) 
+		        from bag 
+		        where bag.creatorId = user.userId and bag.createTime > #{beginTime}
+		    )
+		    , weekReturnedMoney = (
+		        select sum(bag.returnedMoney) 
+		        from bag 
+		        where bag.creatorId = user.userId and bag.createTime > #{beginTime}
+		    )
+		where
+		    user.userId >= 0
+	</update>
+	
+	<update id="updateUserSpentMoney">
+		update
+		    user
+		set
+		    spentMoney = (
+		        select sum(bill.money) 
+		        from bill 
+		        where bill.userId = user.userId and bill.billType = 2
+		    )
+		where
+		    user.userId = #{userId}
+	</update>
+	
+	<update id="updateWeekUserSpentMoney">
+		update
+		    user
+		set
+		    weekSpentMoney = (
+		        select sum(bill.money) 
+		        from bill 
+		        where bill.userId = user.userId and bill.billType = 2 and bill.createTime > #{beginTime} 
+		    )
+		where
+		    user.userId = #{userId}
+	</update>
+	
+	<update id="updateWeekUserSpentMoneyForQuartz">
+		update
+		    user
+		set
+		    weekSpentMoney = (
+		        select sum(bill.money) 
+		        from bill 
+		        where bill.userId = user.userId and bill.billType = 2 and bill.createTime > #{beginTime} 
+		    )
+		where
+		    user.userId >= 0
+	</update>
+	
+	<!-- score_defeat ================================================================================ -->
+	<select id="getAnswerMostQueUserId" resultType="java.util.HashMap">
+        select 
+        	userId
+        	,max(queCount) as queCountMax
+        from
+			(
+				select 
+					userId
+					,count(*) as queCount
+				from 
+					qzy.user_answer 
+				where user_answer.endAnswerTime > #{beginTime} 
+				group by userId
+			) tempTable
+    </select>
+    
+    <select id="getAnswerMostTimeUserId" resultType="java.util.HashMap">
+        select 
+        	userId
+        	,max(consumeTimeSum) as consumeTimeSumMax
+        from
+			(
+				select 
+					userId
+					,sum(consumeTime) as consumeTimeSum 
+				from 
+					qzy.user_answer 
+				where user_answer.endAnswerTime > #{beginTime} 
+				group by userId
+			) tempTable
+    </select>
+    
+    <select id="getUserAnswerGroupByUser" resultType="java.util.HashMap">
+        select 
+        	a.queCount
+        	,b.queRightCount
+        	,a.consumeTimeSum 
+        from
+			(
+				SELECT 
+					userId
+					,count(*) as queCount
+					,sum(consumeTime) as consumeTimeSum 
+				FROM 
+					qzy.user_answer 
+				where user_answer.endAnswerTime > #{beginTime} 
+				group by userId order by userId asc
+			) a,
+			(
+				SELECT 
+					userId
+					,count(*) as queRightCount 
+				FROM 
+					qzy.user_answer 
+				where 
+					isUserRight=1 
+					and user_answer.endAnswerTime > #{beginTime} 
+				group by userId order by userId asc
+			) b 
+		where 
+			a.userId = b.userId
+    </select>
+    
+    <select id="getUserAnswerByUserId" resultType="java.util.HashMap">
+        select 
+        	a.queCount
+        	,b.queRightCount
+        	,a.consumeTimeSum 
+        from
+			(
+				SELECT 
+					userId
+					,count(*) as queCount
+					,sum(consumeTime) as consumeTimeSum 
+				FROM 
+					qzy.user_answer 
+				where 
+					user_answer.userId=#{userId} 
+					and user_answer.endAnswerTime > #{beginTime}  
+			) a,
+			(
+				SELECT 
+					userId
+					,count(*) as queRightCount 
+				FROM 
+					qzy.user_answer 
+				where 
+					user_answer.userId=#{userId} 
+					and isUserRight=1 
+					and user_answer.endAnswerTime > #{beginTime}  
+				group by userId order by userId asc
+			) b 
+		where 
+			a.userId = b.userId
+    </select>
+
+    <insert id="insertScoreDefeat" parameterType="ScoreDefeat">
+        insert into score_defeat
+            (score, defeatWeek, defeatOneMonth, defeatThreeMonth, defeatAll)
+        values
+            (#{score}, #{defeatWeek}, #{defeatOneMonth}, #{defeatThreeMonth}, #{defeatAll})
+    </insert>
+
+	<update id="updateScoreDefeat" parameterType="ScoreDefeat">
+		update
+		    score_defeat
+		set
+		    defeatWeek = #{defeatWeek}
+		    , defeatOneMonth = #{defeatOneMonth}
+		    , defeatThreeMonth = #{defeatThreeMonth}
+		    , defeatAll = #{defeatAll}
+		where
+		    score = #{score}
+	</update>
+
+    <select id="getScoreDefeat" resultType="ScoreDefeat">
+        select
+        	*
+        from
+			score_defeat
+		where
+			score_defeat.score = #{score}
+    </select>
+    
+    
+    <!-- 错题集 ==================================================== -->
+    <select id="getWrongQueList" resultMap="userAnswerWithQueMap">
+       select 
+	       user_answer.*
+	       ,que.*
+	       ,que_choice.* 
+	   from 
+	       user_answer 
+           join que using (queId) 
+		   join que_choice using (queId) 
+	   where 
+	      user_answer.userId = #{userId} 
+		  and queId in (
+				select 
+				    queId 
+				from 
+					user_answer 
+			    where 
+				    user_answer.userId = #{userId}
+					and user_answer.isUserRight=0 
+					and user_answer.bagId in ( 
+					       	select 
+					       		bagId 
+					       	from 
+					       		user_bag 
+					       	where 
+					       		user_bag.userId = #{userId} 
+					       		and user_bag.hasPaidAnalysis = 1
+					       )
+			)
+	   order by endAnswerTime desc
+    </select>
+
+</mapper>
+

@@ -1,0 +1,6 @@
+/* 显摆 赞美 嘲笑 的分享页面*/
+.share_tip_holder {padding: 50px 5%; text-align: center; margin-top: 150px;}
+.share_tip { font-size: x-large; font-weight: bold; display: block; margin: 20px 0; }
+.share_tip_mask_holder { display: none; position: fixed; left: 0; right: 0; bottom: 0; top: 0; height: 100%; }
+.share_tip_mask {width: 100%; }
+

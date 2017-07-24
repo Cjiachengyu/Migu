@@ -1,0 +1,40 @@
+body { background: rgb(232, 232, 232); }
+.data_select_holder span {display: inline-block; text-align: center; width: 25%; height: 27px; padding-top: 10px;}
+.select_holder {background-color: white;border-bottom: 2px solid orange;color: orange;}
+.not_select_holder {}
+
+.title_holder {padding-top: 15px; height: 70px; background-image: url("../../image/top_bg.jpg");color: white; position: relative;}
+.title_holder .score_time {float: left;font-size: 20px;   margin-left: 20px;margin-top: 10px;}
+.title_holder .score {
+    font-size: 50px;
+    margin-left: 10px;
+    margin-top: 5px;
+    color: red;
+    position: absolute;
+    right: 15px;
+    top: 10px;}
+.title_holder .score_defeat {float: left;font-size: 13px; margin-left: 20px; margin-top: 5px;}
+
+.basic_message_holder { padding-top: 3px; background: white;}
+.basic_message_holder div {margin-top: 10px;margin-left: 20px;height: 30px;}
+.basic_message_holder span { border-left: 2px solid orange; padding: 1px 0 1px 10px;}
+.answer_count,.right_percent {border-bottom: 1px dotted #ddd;}
+
+
+.detail_message_holder {padding-bottom: 10px;}
+.detail_item_holder {padding-top: 1px;}
+
+.detail_message_holder .zsk {margin-left: 10px;margin-right: 10px;background-color: white;border-radius: 15px;margin-top: 10px;padding-bottom: 10px;}
+.detail_message_holder .zsk_name {background-color: orange;color: white;font-size: 18px;height: 30px;border-top-left-radius: 15px;border-top-right-radius: 15px;padding-top: 7px;padding-left: 15px;}
+.detail_message_holder .zsd1 { margin-left: 15px; margin-top: 8px; color: orange; font-size: 16px; padding-bottom: 8px; border-bottom: 1px dotted rgb(234, 234, 234); }
+.detail_message_holder .zsd2 { margin-left: 15px; margin-top: 8px; padding-left: 15px; font-size: 14px; padding-bottom: 8px; border-bottom: 1px dotted rgb(234, 234, 234); color: rgb(37, 37, 37); }
+
+.view_trend, .view_trend:visited { padding-left: 10px; color: red; }
+
+.zsd1_col1 { width: 48%; display: inline-block;}
+.zsd1_col2 { width: 60px; display: inline-block; font-size: 12px;}
+.zsd1_col3 { width: 80px; display: inline-block; font-size: 12px;}
+
+.zsd2_col1 { width: 45%; display: inline-block;}
+.zsd2_col2 { width: 60px; display: inline-block; font-size: 12px;}
+.zsd2_col3 { width: 80px; display: inline-block; font-size: 12px;}

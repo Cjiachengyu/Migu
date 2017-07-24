@@ -1,0 +1,94 @@
+﻿body { font-size: 17px; }
+a { color: #333; text-decoration: none; cursor: pointer; }
+a:visited { color: #333; }
+a:hover { text-decoration: none; }
+a.underline { text-decoration: underline; }
+img { border:none; }
+ul { list-style: none; }
+input[type="button"] { cursor: pointer; }
+
+/* 通用 */
+.hidden, .hide, .none { display: none; }
+.inline { display: inline-block; }
+.hand { cursor: pointer;}
+.shadow { box-shadow: 0 0 5px 0 #CECECE; }
+
+.ellipsis {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+/* 定位 */
+.relative {position: relative;}
+.absolute {position: absolute;}
+.fixed {position: fixed;}
+.left {float: left;}
+.right {float: right;}
+.clear { clear: both; height: 0; line-height: 0; font-size: 0; visibility: hidden; overflow: hidden; }
+.clearfix { *zoom: 1;}
+.clearfix:after { content: "."; display: block; height: 0; visibility: hidden; clear: both; }
+
+/* 颜色 */
+.black {color: black;}
+.dark_gray {color: #333;}
+.gray {color: #888;}
+.light_gray {color: #ECECEC;}
+.white {color: white;}
+.red {color: red;}
+
+.bg_black {background-color: black;}
+.bg_dark_gray {background-color: #333;}
+.bg_gray {background-color: #888;}
+.bg_light_gray {background-color: #ECECEC;}
+.bg_white {background-color: white;}
+.bg_red {background-color: red;}
+
+/* 大小 */
+.mar5{margin: 5px;}
+.mar10{margin: 10px;}
+.mar20{margin: 20px;}
+
+.pad5{padding: 5px;}
+.pad10{padding: 10px;}
+.pad20{padding: 20px;}
+
+/* 字体 */
+.font10 { font-size: 10px; }
+.font11 { font-size: 11px; }
+.font12 { font-size: 12px; }
+.font13 { font-size: 13px; }
+.font14 { font-size: 14px; }
+.font15 { font-size: 15px; }
+.font16 { font-size: 16px; }
+.font17 { font-size: 17px; }
+.font18 { font-size: 18px; }
+.font19 { font-size: 19px; }
+.font20 { font-size: 20px; }
+.font21 { font-size: 21px; }
+.font22 { font-size: 22px; }
+.font23 { font-size: 23px; }
+.font24 { font-size: 24px; }
+.font25 { font-size: 25px; }
+.font26 { font-size: 26px; }
+.font27 { font-size: 27px; }
+.font28 { font-size: 28px; }
+.font29 { font-size: 29px; }
+.font30 { font-size: 30px; }
+
+.font_large {font-size: 28px;}
+.font_big   {font-size: 24px;}
+.font_middle{font-size: 17px;}
+.font_small {font-size: 14px;}
+.font_tiny  {font-size: 12px;}
+
+.font_yahei     {font-family: 微软雅黑;}
+.font_bold      {font-weight: bold;}
+.font_lighter   {font-weight:lighter; }
+
+/* 弹出层样式 */
+.full_mask_root_div {position: absolute; top: 0px; left: 0px; background: rgba(0,0,0,0.5); }
+
+/* mathquill bug */
+.mathquill-rendered-math .selectable { display: none; }
+

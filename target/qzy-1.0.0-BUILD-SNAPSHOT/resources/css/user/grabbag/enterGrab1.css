@@ -1,0 +1,33 @@
+body { background: url("../../../image/user/grabbag/body_bg.png"); background-size: cover;}
+
+.grab_bag_info_holder {
+    background: url("../../../image/user/grabbag/bag_bg.png") no-repeat;
+    background-size: contain;
+    width: 235px;
+    height: 315px;
+    margin: 52px auto 20px auto;
+    text-align: center;
+    color: white;
+    font-size: 18px;
+}
+
+.grab_bag_money_info { padding: 125px 35px 0px 35px; height: 33px; font-size: 20px;}
+.grab_bag_zsd_info { padding: 0px 35px 0px 35px; height: 55px; font-size: 15px; }
+
+.grab_bag_left_info { padding: 20px 35px; font-size: 22px; font-weight: bold; }
+.grab_bag_left_info_count { font-size: 30px; color: rgb(255, 255, 121); }
+
+
+.btn_start_answer, .btn_start_answer:visited {
+    display: block;
+    padding: 7px;
+    font-size: 20px;
+    border-radius: 7px;
+    color: white;
+    background: #FFBB34;
+    box-shadow: 0px 2px 1px 0px rgba(92, 52, 3, 0.6);
+    width: 221px;
+    margin: 0 auto;
+    text-align: center;
+}
+

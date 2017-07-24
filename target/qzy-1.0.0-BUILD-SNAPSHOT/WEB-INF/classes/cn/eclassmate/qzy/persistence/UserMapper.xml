@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.eclassmate.qzy.persistence.UserMapper">
+
+    <select id="getUser" parameterType="int" resultType="User">
+        select
+            *
+        from
+            user
+        where
+            user.userId = #{userId}
+    </select>
+
+    <select id="getUserByQQOpenId" parameterType="string" resultType="User">
+        select
+            *
+        from
+            user
+        where
+            user.qqOpenId = #{qqOpenId}
+    </select>
+
+    <select id="getUserByOpenId" parameterType="string" resultType="User">
+        select
+            *
+        from
+            user
+        where
+            user.openId = #{openId}
+    </select>
+
+    <select id="getUserByUnionId" parameterType="string" resultType="User">
+        select
+            *
+        from
+            user
+        where
+            user.unionId = #{unionId}
+    </select>
+
+    <select id="getEditorByLoginName" parameterType="string" resultType="Editor">
+		select 
+            * 
+		from 
+            editor 
+		where 
+            editor.loginName = #{loginName}
+	</select>
+	
+	<select id="getAdminByLoginName" parameterType="string" resultType="Admin">
+		select 
+            * 
+		from 
+            admin  
+		where 
+            admin.loginName = #{loginName}
+	</select>
+
+    <insert id="insertUser" useGeneratedKeys="true" keyProperty="userId" parameterType="User">
+		insert into user
+            (userName,
+            openId, unionId, qqOpenId,
+            portrait, city, province, country, gender,
+            updateWeixinTime, lastLoginTime, registerTime,
+            money,shuatiZskId,createBagZskId)
+		values
+            (#{userName},
+            #{openId}, #{unionId}, #{qqOpenId},
+            #{portrait}, #{city}, #{province}, #{country}, #{gender},
+            #{updateWeixinTime}, #{lastLoginTime}, #{registerTime},
+            #{money},#{shuatiZskId},#{createBagZskId})
+	</insert>
+
+    <update id="updateUser" parameterType="User">
+		update
+            user
+		set
+            userName=#{userName}
+            , openId=#{openId}
+            , unionId=#{unionId}
+            , qqOpenId=#{qqOpenId}
+            , portrait=#{portrait}
+            , city=#{city}
+            , province=#{province}
+            , country=#{country}
+            , gender=#{gender}
+            , updateWeixinTime=#{updateWeixinTime}
+            , lastLoginTime=#{lastLoginTime}
+            , registerTime=#{registerTime}
+            , money=#{money}
+            , shuatiZskId=#{shuatiZskId}
+            , createBagZskId=#{createBagZskId} 
+            , tuiGuangStatus=#{tuiGuangStatus} 
+		where
+            userId = #{userId}
+	</update>
+
+	<update id="updateEditor" parameterType="Editor">
+		update 
+            editor 
+		set 
+            editorName=#{editorName}
+            , loginName=#{loginName}
+            , password=#{password}
+            , privilegeMask=#{privilegeMask}
+		where 
+            editorId = #{editorId}
+	</update>
+	
+	
+	<update id="updateAdmin" parameterType="Admin">
+		update 
+            admin  
+		set 
+            adminName=#{adminName}
+            , loginName=#{loginName}
+            , password=#{password}
+		where 
+            adminId = #{adminId}
+	</update>
+	
+	<select id="getUserFriend" parameterType="int" resultType="UserFriend">
+		select
+			*
+		from
+			user_friend
+		where
+			(userId = #{userId} and friendId = #{friendId})
+			or
+			(userId = #{friendId} and friendId = #{userId})
+	</select>
+	
+	<insert id="insertUserFriend" parameterType="UserFriend">
+		insert into user_friend
+			(userId, friendId, intimacy)
+		values
+			(#{userId}, #{friendId}, #{intimacy})
+	</insert>
+		
+	<update id="updateUserFriend" parameterType="UserFriend">
+		update 
+			user_friend
+		set
+			intimacy = #{intimacy}
+        where
+			userId = #{userId}
+			and friendId = #{friendId}
+	</update>
+	
+	<select id="getEditorList" resultType="Editor">
+		select 
+			* 
+		from 
+			editor 
+	</select>
+	
+	<select id="getEditorByEditorId" resultType="Editor">
+		select 
+			* 
+		from 
+			editor 
+		where 
+			editorId = #{editorId}
+	</select>
+	
+	<select id="getUserCount" resultType="int">
+		select 
+			count(*)  
+		from 
+			user  
+	</select>
+	
+</mapper>

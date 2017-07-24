@@ -1,0 +1,42 @@
+body {margin-bottom: 20px; }
+.sub_title { margin: 10px 0 5px 0}
+.sub_title > span { font-weight: bold; }
+.small_input_text { width: 294px; border: solid 1px lightgray; padding: 3px; margin-top: 5px;}
+
+.column_content_holder, .column_choice_holder, .column_analysis_holder, .column_answer_holder
+{ float: left; width: 300px; padding: 0 10px;}
+
+.content_info_holder {margin: 10px 0;}
+.selected_zsd_list {border: solid 1px lightgray; width: 100%; height: 50px; margin-top: 5px;overflow: auto;}
+.selected_zsd_list li { font-size: 16px; margin: 3px 10px;}
+
+.content_editor_holder {margin: 5px 0;}
+.editor_content { width:300px; height:357px;}
+
+.choice_editor_holder {margin: 5px 0;}
+.editor_choice { width:300px; height:50px;}
+.choice_operation_holder {margin-top: 10px;}
+.choice_holder_div { display: none; }
+
+.analysis_editor_holder {margin: 5px 0;}
+.editor_analysis {width:300px; height:446px;}
+
+.answer_editor_holder {margin: 5px 0;}
+.editor_answer {width:300px; height:411px;}
+
+.submit_btn_1 { width: 148px; padding: 5px; margin-top: 15px;}
+.submit_btn_2 { width: 148px; padding: 5px; margin-top: 15px; margin-right: -4px; margin-left: 1px;}
+.submit_btn_all { width: 302px; padding: 5px; margin-top: 15px;}
+
+.zsk_Content, .zsd1_Content, .zsd2_Content  {width: 25%; float: left; height: 100%; border-right: solid 1px lightgray; margin-right: -1px;}
+.zsk_Content span, .zsd1_Content span {display: block; cursor: pointer; margin: 0 0 3px 0; padding: 3px 10px;}
+.zsd2_Content span {display: block; margin: 0 0 3px 0; padding: 3px 10px;}
+.selected_zsd_item { background: lightgray;  }
+.zsd_data_div { width: 25%; float: left; height: 100%; }
+.popup_selected_zsd { padding: 3px 10px; height: 80%; }
+.popup_selected_zsd_title { margin-bottom: 10px; }
+.add_zsd_float_btn {float: right; padding: 1px 5px; }
+.added_zsd_holder {padding: 3px 5px; }
+
+.ok_btn_holder .ok_btn_select_zsd { display: block; width: 120px; margin: 0 auto; padding: 5px; }
+

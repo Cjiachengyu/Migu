@@ -1,0 +1,29 @@
+﻿.main_menu_holder_all { position: fixed; left: 0; top: 0; right: 0; bottom: 0; z-index: 90; overflow: auto; padding-bottom: 50px; background: #fff9f2; }
+.main_menu_top_half_all { background: #fc9d31; }
+
+.btn_login, .btn_login:visited { position: absolute; top: 15px; left: 17px; font-size: 14px; color: black; }
+.btn_user_account { position: absolute; top: 12px; left: 15px; width: 22px; height: 22px; border-radius: 20px; }
+.top_user_name, .top_user_name:visited { position: absolute; top: 17px; left: 42px; font-size: 13px; color: black;}
+
+.main_menu_big_icon_holder { text-align: center;}
+.main_menu_icon_create_bag_holder {text-align: center; margin: 20px auto 45px auto;}
+.main_menu_icon_create_bag_all { position: relative; display: inline-block; }
+.main_menu_icon_create_bag_left_count { border: solid 2px red; color: white; border-radius: 100px; display: inline-block; position: absolute; width: 20px; height: 20px; top: -14px; right: -14px; text-align: center; background: red; font-weight: bold; font-family: Arial; font-size: 18px;}
+.main_menu_icon_create_bag_text { background-image: url("../../image/user/home/main_menu_icon_create_bag_text.png"); display: block; height: 28px; width: 69px; background-repeat: no-repeat; background-size: contain; margin: 0 auto 5px auto;}
+.main_menu_icon_create_bag_left_count_tip { font-size: 12px; display: block; color: rgb(171, 171, 171); }
+.main_menu_icon_create_bag  { width: 158px; height: 180px; margin-right: -5px; display: inline-block; background-image: url("../../image/user/home/main_menu_icon_create_bag.png?v=2"); background-size: contain; background-repeat: no-repeat;}
+.main_menu_icon_shuati      { width: 158px; height: 180px; margin-left: -5px; display: inline-block; background-image: url("../../image/user/home/main_menu_icon_shuati.png?v=2"); background-size: contain; background-repeat: no-repeat;}
+
+.main_menu_icon_baglist     {background-image: url("../../image/user/home/main_menu_icon_baglist.png"); }
+.main_menu_icon_rank        {background-image: url("../../image/user/home/main_menu_icon_rank.png"); }
+.main_menu_icon_account     {background-image: url("../../image/user/home/main_menu_icon_account.png?v=1"); }
+.main_menu_icon_study_report{background-image: url("../../image/user/home/main_menu_icon_study_report.png"); }
+.main_menu_icon_prize       {background-image: url("../../image/user/home/main_menu_icon_prize.png"); }
+.main_menu_icon_about       {background-image: url("../../image/user/home/main_menu_icon_about_us.png"); }
+
+.main_menu_row { width: 90%; margin: 30px auto;}
+.main_menu_row_1 {}
+.main_menu_row_2 {}
+.main_menu_icon_holder {  display: inline-block; float: left; width: 33.3333333333%; text-align: center;}
+.main_menu_icon { display: inline-block; width: 50px; height: 70px; background-size: contain; background-repeat: no-repeat;}
+

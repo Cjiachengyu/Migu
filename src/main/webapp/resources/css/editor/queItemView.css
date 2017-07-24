@@ -1,0 +1,7 @@
+.que_item_info_all_holder {padding: 10px 3%; }
+.que_item_sub_title { font-weight: bold; }
+.que_choice_item { margin: 10px 0; }
+.que_choice_marker { display: inline-block; width: 15%; text-align: right; vertical-align: top; }
+.que_choice_holder { display: inline-block; width: 82%; padding-left: 3%;}
+.que_item_sep { border-bottom: dotted 1px lightgray; margin: 15px 0; }
+

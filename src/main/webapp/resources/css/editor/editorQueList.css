@@ -1,0 +1,17 @@
+.que_select_condition { border-bottom: solid 2px gray; padding: 10px 20px; margin: 10px 0;}
+.que_editor_selector,.que_status_selector,.que_from_type_selector,.que_zsk_selector,.que_zsd1_selector,.que_zsd2_selector {padding: 5px; font-size: 16px; width: 120px; }
+
+
+.editor_choose_title {font-size: 20px;margin-left: 20px;}
+.editor_list_holder {margin-left: 35px;margin-top: 5px;}
+.que_status_choose_title {margin-top: 10px;font-size: 20px;margin-left: 20px;}
+.que_status_holder {margin-left: 35px; margin-top: 5px;}
+.selected {background: #ff4444; color: white;}
+
+.que_list_holder { margin: 0 auto; width: 1246px; }
+.que_item_all_holder {display: inline-block; border: solid 1px lightgray; margin: 10px 2px;}
+.que_status_red { border: solid 2px red; margin: 9px 1px;}
+.que_item_info_all { height: 25px; border-bottom: solid 1px lightgray; padding: 5px;}
+.que_item_content_all { overflow: auto; width: 300px; height: 360px; }
+
+

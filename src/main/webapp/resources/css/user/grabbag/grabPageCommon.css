@@ -1,0 +1,18 @@
+.grab_bag_info_holder { background: white; padding-top: 25px; text-align: center; padding-bottom: 15px;}
+.grab_bag_title_img { height: 25px; display: block; margin: 0 auto 15px auto;}
+.grab_bag_face_img { height: 150px; margin: 5px auto 0px auto; display: block; }
+
+.money_change_tip { text-align: center; padding: 10px 0 0 0;}
+.money_change_tip_text {font-size: 20px; font-weight: bold; vertical-align: middle;}
+.money_change_tip_money { font-size: 25px; color: orangered; }
+.money_change_tip_money_all_holder {text-align: center; padding-top: 2px; }
+.money_change_tip_money_all { font-size: 14px; color: rgb(140, 140, 140); }
+
+.zhuanfa_tip_holder { padding-top: 20px; }
+.zhuanfa_tip { font-size: 15px; font-weight: bold;}
+
+.operation_btn_holder {text-align: center; padding: 20px 0 10px 0;}
+.operation_btn { width: 110px; margin: 0 10px;}
+.operation_btn_wide { width: 140px; margin: 10px;}
+
+

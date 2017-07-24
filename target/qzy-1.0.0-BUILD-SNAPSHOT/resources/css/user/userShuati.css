@@ -1,0 +1,52 @@
+.chart_title_holder { padding: 25px 0 5px 0; font-size: large; font-weight: bold; color: orangered; text-align: center; }
+.container { height: 400px; margin: 0 auto;}
+
+.zsk_list_holder {padding: 0 15px 15px 15px; }
+.zsd1_list_holder {padding: 15px; }
+.zsd2_list_holder {padding: 15px; }
+.zsl { padding: 2px 5px; margin: 2px; border-bottom: 1px solid rgb(223, 223, 223); margin-top: 15px; text-align: center;}
+.zsd_btn {  padding: 2px 5px; display: inline-block; margin: 2px; font-size: 17px; color: orangered;}
+
+.select_input_row { background: white; color: black; border-bottom: 5px solid rgb(231, 231, 231); padding: 8px 0 3px 0;}
+.select_input_col1 { display: inline-block; float: left; width: 33%; padding: 5px 0%; border-left: solid 3px rgb(255, 153, 19); margin: 5px 0px 5px 5%; font-weight: bold;}
+.select_input_border {border-left: 2px solid orange;}
+.selected_zsk_title {margin-left: 10px;}
+
+.select_input_col2 {padding: 10px 0 10px 4%; display: inline-block; float: left; width: 46%; white-space: nowrap; text-overflow: ellipsis; overflow: hidden;text-align: right;color: #f84;}
+.select_input_col3 { padding: 10px; float: right; font-weight: bold; color: #f84; }
+
+.zsd_report_holder { margin-bottom: 60px; }
+.zsd1 { margin-top: 10px; border-bottom: 5px solid rgb(231, 231, 231); padding-bottom: 8px;}
+.zsd1_info { margin: 0 5% 10px 5%; padding: 0 2% 0 0;}
+.zsd1_name { font-weight: bold;}
+.zsd1_name .up_or_down { width: 18px; height: 7px; border-radius: 20px; vertical-align: middle; margin: 13px 0 0 5px;}
+.zsd1_name .practice_img {display: inline-block;float: right;height: 35px;}
+.zsd1_name_span { position: relative; top: 8px; border-left: 3px solid rgb(255, 153, 19); padding: 3px 0px 3px 10px;}
+
+.zsd1_moon_holder { margin: 1px 5% 0px 5%; padding: 9px 2% 7px 2%; border-top: dotted 1px rgb(234, 234, 234);}
+.zsd1_moon_no_zsd2 { background: #F9F9F9; border-top: dotted 0px rgb(234, 234, 234); border-radius: 8px;}
+.zsd1_left {width: 55%; float: left; font-size: 14px; color: gray;}
+.zsd1_percent_detail { padding-bottom: 5px;}
+.zsd1_percent {}
+.zsd1_right { float: left; width: 45%; padding-top: 2px;}
+.zsd1_right .moon {float: left; width: 33%; text-align: center;}
+.zsd1_right .moon img {width: 27px; height: 29px; padding-top: 3px; }
+
+.zsd2 { margin: 3px 5% -2px 5%; padding: 7px 2% 3px 2%; border-bottom: dotted 1px #eee;}
+.zsd2:last-child { border-bottom: dotted 0px #eee;}
+.zsd2_left {width: 55%; float: left; }
+.practice_holder {float: left;}
+.practice_holder img {display: inline-block;width: 35px;}
+.zsd2_name {float: left; width: 70%; font-size: 17px;margin-left: 5px; white-space: nowrap; text-overflow: ellipsis; overflow: hidden;}
+.zsd2_percent_detail {float: left; width: 30%; font-size: 13px; color: gray; font-style: italic;margin-left: 5px;}
+.zsd2_percent {float: left; font-size: 13px; color: gray; font-style: italic;}
+.zsd2_right { float: left; width: 45%;}
+.zsd2_right .star {float: left; width: 33%; text-align: center;}
+.zsd2_right .star img {width: 30px; height: 30px; padding-top: 3px; }
+
+.star_popup_holder, .moon_popup_holder { text-align: center; margin: 20px; height: 60px;}
+.star_popup_button_div,.moon_popup_button_div {text-align: center;}
+.star_popup_button_div .ok_button { display: inline-block; width: 100px; color: white; padding: 5px; background: #f80; font-weight: bold; font-size: large; border-radius: 8px;}
+.moon_popup_button_div .ok_button { display: inline-block; width: 100px; color: white; padding: 5px; background: #f80; font-weight: bold; font-size: large; border-radius: 8px;}
+
+

@@ -1,0 +1,30 @@
+body { }
+
+.grab_bag_info_holder {
+    background: url("../../../image/user/grabbag/body_bg.png");
+    background-size: cover;
+}
+
+.grab_bag_face_img { height: 235px; }
+
+.grab_bag_money_info { padding: 57px 35px 0px 35px; font-size: 19px; position: relative; top: -97px; color: white; }
+.grab_bag_zsd_info { padding: 8px 115px 0px 115px; font-size: 15px; position: relative; top: -97px; color: white; height: 50px; margin-bottom: -35px;}
+
+.grab_bag_left_info { font-size: 18px; font-weight: bold; color: white; margin-top: -134px; height: 40px; position: relative; top: 85px;}
+.grab_bag_left_info_count { font-size: 28px; color: rgb(255, 255, 121); padding: 0 3px;}
+
+.operation_btn_holder { text-align: center; padding: 10px 0 5px 0; }
+/*
+.operation_btn_wide, .operation_btn_wide:visited {
+    display: block;
+    padding: 7px;
+    font-size: 20px;
+    border-radius: 7px;
+    color: white;
+    background: #FFBB34;
+    box-shadow: 0px 2px 2px -1px rgba(92, 52, 3, 0.6);
+    width: 164px;
+    margin: 0 auto;
+    text-align: center;
+}
+*/
