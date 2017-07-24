@@ -3,6 +3,7 @@ package cn.eclassmate.qzy.domain;
 import cn.eclassmate.qzy.global.Cst;
 
 import java.io.Serializable;
+import java.util.Date;
 
 public class Admin implements Serializable
 {
@@ -13,7 +14,12 @@ public class Admin implements Serializable
     private int adminId;
     private String adminName;
     private String loginName;
+
+
+    private Integer id;
+    private String name;
     private String password;
+    private Date addTime;
 
     // getter setter
     // --------------------------------------------------------------------------------
@@ -57,4 +63,27 @@ public class Admin implements Serializable
         this.password = password;
     }
 
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Date getAddTime() {
+        return addTime;
+    }
+
+    public void setAddTime(Date addTime) {
+        this.addTime = addTime;
+    }
 }

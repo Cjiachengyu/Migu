@@ -27,13 +27,12 @@ public class BasicService extends AbstractService
         }
     }
 
-    public Manager managerLogin(String account, String password)
+    public Admin managerLogin(String account, String password)
     {
-        Manager manager = managerMapper.getManagerByName(account);
-
-        if (manager != null && manager.getPassword().equals(password))
+        Admin admin = adminMapper.getAdminByName(account);
+        if (admin != null && admin.getPassword().equals(password))
         {
-            return manager;
+            return admin;
         }
         else
         {

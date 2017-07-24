@@ -2,8 +2,8 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="cn.eclassmate.qzy.persistence.ManagerMapper">
-    <resultMap id="BaseResultMap" type="Manager">
+<mapper namespace="cn.eclassmate.qzy.persistence.AdminMapper">
+    <resultMap id="BaseResultMap" type="Admin">
         <id column="id" property="id" />
         <id column="name" property="name" />
         <id column="password" property="password" />
@@ -17,8 +17,8 @@
         add_time
     </sql>
 
-    <insert id="insertManager" parameterType="Manager" >
-        insert into manager
+    <insert id="insertAdmin" parameterType="Admin" >
+        insert into admin
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="name != null">
                 name,
@@ -37,8 +37,8 @@
         </trim>
     </insert>
 
-    <update id="updateManager" parameterType="Manager">
-        update manager
+    <update id="updateAdmin" parameterType="Admin">
+        update admin
         <set>
             <if test="name != null">
                 name = #{name},
@@ -50,11 +50,11 @@
         where id = #{id}
     </update>
 
-    <select id="getManagerByName" parameterType="String" resultMap="BaseResultMap" >
+    <select id="getAdminByName" parameterType="String" resultMap="BaseResultMap" >
         select
           <include refid="Base_Column_List" />
         from
-          manager
+          admin
         where
           name = #{name}
         limit 1

@@ -25,7 +25,7 @@ public abstract class AbstractService implements Serializable
     protected UserMapper userMapper;
 
     @Autowired
-    protected ManagerMapper managerMapper;
+    protected AdminMapper adminMapper;
 
 
     @Autowired

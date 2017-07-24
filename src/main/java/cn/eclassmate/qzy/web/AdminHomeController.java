@@ -1,6 +1,6 @@
 package cn.eclassmate.qzy.web;
 
-import cn.eclassmate.qzy.domain.Manager;
+import cn.eclassmate.qzy.domain.Admin;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.View;
@@ -27,12 +27,12 @@ public class AdminHomeController extends AbstractController
     @RequestMapping("login")
     public View login(HttpServletRequest request, String account, String password) throws Exception
     {
-        Manager manager = basicService.managerLogin(account, password);
-        if (manager != null)
+        Admin admin = basicService.managerLogin(account, password);
+        if (admin != null)
         {
-            request.getSession().setAttribute("manager", manager);
+            request.getSession().setAttribute("admin", admin);
 
-            if ("123456".equals(manager.getPassword()))
+            if ("123456".equals(admin.getPassword()))
             {
                 return getTextPlainView("simplepwd");
             }
