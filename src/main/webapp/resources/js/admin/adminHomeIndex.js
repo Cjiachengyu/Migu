@@ -36,8 +36,8 @@ $(function() {
 			},
 			success : function(result) {
 				if (result === "ok") {
-                    AlertDialog("login ok");
-					//window.location.href = "/migu/admin/list/editorlist";
+                    //AlertDialog("login ok");
+					window.location.href = "/migu/admin/manage/welcome";
 				}
 				else if (result === "simplepwd") {
 					AlertDialog("您的密码过于简单，请修改密码", null, function() {

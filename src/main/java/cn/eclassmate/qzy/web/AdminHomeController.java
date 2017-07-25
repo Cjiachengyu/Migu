@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 
 @Controller
 @RequestMapping("admin/home")
-public class AdminHomeController extends AbstractController
+public class  AdminHomeController extends AbstractController
 {
 
     // page
