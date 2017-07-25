@@ -43,7 +43,7 @@
             <ul class="nav navbar-nav navbar-right">
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        Java <b class="caret"></b>
+                        操作 <b class="caret"></b>
                     </a>
                     <ul class="dropdown-menu">
                         <li><a href="#">退出</a></li>
